@@ -1,0 +1,1 @@
+<?php header("Location: https://en.help.roblox.com/hc/en-us/articles/203312790-Graphics-Problems-on-Computers"); ?>

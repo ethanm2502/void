@@ -1,0 +1,372 @@
+/* ~/CSS/Pages/Upgrades/BuildersClubProductsGrid.css */
+#BCPageContainer .header {
+  padding-left: 10px;
+}
+#BCPageContainer .header .expire-text {
+  padding-left: 5px;
+  vertical-align: top;
+}
+.expire-text .date {
+  color: #cb0000;
+  vertical-align: top;
+}
+#BCPageContainer .left-column {
+  width: 720px;
+  float: left;
+  margin: 0;
+}
+#BCPageContainer .right-column {
+  width: 250px;
+  float: right;
+}
+#BCPageContainer .header {
+  width: 100%;
+  clear: both;
+  padding-bottom: 30px;
+}
+#BCPageContainer .right-column #RightColumnWrapper {
+  border: none;
+}
+.simplemodal-container {
+  *top: -150px;
+}
+.product-title .center-bold {
+  text-align: center;
+  font-weight: bold;
+  width: 179px;
+}
+.product-title .product-space {
+  margin-bottom: 15px;
+  width: 100%;
+}
+.product-title td {
+  padding-bottom: 20px;
+}
+.product-summary td {
+  padding: 4px;
+}
+.product-summary tr:first-child td {
+  border-top: none;
+  padding-top: 15px;
+}
+.product-summary .product-description {
+  text-align: left;
+  float: left;
+  color: #333;
+}
+.product-summary .nbc-product {
+  float: right;
+  width: 3em;
+  color: #d90000;
+  text-align: center;
+  font-weight: bold;
+}
+.product-summary {
+  color: #024102;
+  text-align: center;
+}
+.product-summary.summary-big {
+  font-weight: bold;
+  font-size: 14px;
+}
+.product-summary.summary-big .emphasis {
+  color: #02b302;
+  font-size: 17px;
+}
+.product-summary.summary-big tr:last-child td {
+  padding-bottom: 25px;
+}
+.product-summary.summary-small .bc-product,
+.product-summary.summary-small .tbc-product,
+.product-summary.summary-small .obc-product {
+  color: #02b302;
+  font-size: 18px;
+  padding: 0;
+}
+.product-summary.summary-small tr:first-child td {
+  padding-top: 20px;
+}
+.product-summary.summary-small tr:last-child td {
+  padding-bottom: 0;
+}
+.product-grid .product-cell:first-child {
+  border-left: none;
+}
+.product-grid .product-nbc {
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  height: 45px;
+}
+.product-grid .product-cell {
+  text-align: center;
+  height: 60px;
+  vertical-align: middle;
+  padding: 12px 0;
+}
+.product-grid .product-current {
+  background: #32b5ff;
+  margin: 7px;
+}
+.product-grid tr:first-child td {
+  margin-top: 25px;
+}
+.product-grid .product-cell .product-text {
+  height: 35px;
+  font-size: 12px;
+}
+.product-grid .product-cell .product-text .product-extend {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+.product-grid .product-cell .product-duration,
+.product-grid .product-cell .product-expiration {
+  vertical-align: top;
+  font-weight: bold;
+}
+.product-grid .product-cell .product-expiration-date {
+  vertical-align: top;
+}
+/* ~/CSS/Pages/CashOut/CashOut.css */
+.bc-page-cashout {
+  margin-bottom: 15px;
+  margin-top: -15px;
+}
+#CashOutWidget {
+  padding: 10px;
+  text-align: center;
+  width: 210px;
+  margin: auto;
+  border: 1px solid #ccc;
+}
+#CashOutWidget .percent-column {
+  float: left;
+  width: 125px;
+  font-size: 50px;
+  padding: 70px 10px 0 0;
+}
+#CashOutWidget .percent-column span {
+  font-size: 28px;
+  position: relative;
+  top: -15px;
+}
+#CashOutWidget .graphic-column {
+  float: left;
+  height: 200px;
+  position: relative;
+  width: 60px;
+}
+#CashOutWidget .graphic-grey {
+  height: inherit;
+  background: #ccc;
+  width: 60px;
+  position: absolute;
+}
+#CashOutWidget .graphic-green {
+  height: inherit;
+  background: green;
+  width: 60px;
+  position: absolute;
+  bottom: 0;
+}
+#CashOutWidget .subtitle {
+  margin: 3px 0;
+}
+#CashOutWidget .robux-name-text {
+  position: absolute;
+  bottom: 0;
+  font-size: 11px;
+  color: #fff;
+  font-weight: normal;
+  left: 13px;
+}
+#CashOutWidget .cash-out {
+  position: relative;
+  top: -13px;
+  font-size: 11px;
+  color: #ccc;
+  text-align: center;
+}
+#CashOutWidget .graphic-container {
+  margin-top: 20px;
+}
+#CashOutWidget .divider-top {
+  margin-top: 10px;
+  padding-top: 10px;
+}
+#CashOutForm {
+  padding: 10px;
+}
+#CashOutForm .billing {
+  float: left;
+  width: 350px;
+  padding-top: 10px;
+}
+#CashOutForm .cash-out-robux {
+  float: left;
+  margin-left: 80px;
+  font-size: 14px;
+  width: 320px;
+}
+#CashOutForm .instruction {
+  clear: both;
+}
+#CashOutForm .form-label {
+  width: 150px;
+}
+#CashOutForm .form-label,
+#CashOutForm .form-element {
+  float: left;
+}
+#CashOutForm .form-row {
+  clear: both;
+  margin-bottom: 15px;
+}
+#CashOutForm input[type="text"],
+#CashOutForm input[type="password"] {
+  padding: 2px;
+}
+#CashOutForm .field-validation-error {
+  display: block;
+  margin-top: 5px;
+  width: 100%;
+}
+#CashOutForm select {
+  margin-left: 0;
+  height: 25px;
+}
+#CashOutForm .status-error {
+  margin-bottom: 20px;
+}
+#CashOutForm .cash-out-robux .form-label,
+#CashOutForm .cash-out-robux .form-element {
+  float: none;
+}
+#CashOutForm .cash-out-robux .row-content h2 {
+  color: green;
+  line-height: 1em;
+  font-size: 24px;
+}
+#CashOutForm .tos {
+  margin: 20px 0 10px 0;
+}
+#CashOutForm .tos input {
+  position: relative;
+  top: 1px;
+  margin-right: 5px;
+}
+#CashOutForm .robux-selection {
+  margin-top: 20px;
+}
+#CashOutForm .robux-selection .row {
+  border: 2px solid #fff;
+  padding-left: 8px;
+}
+#CashOutForm .robux-selection .row:hover {
+  cursor: pointer;
+}
+#CashOutForm .robux-selection .row.selected {
+  border: 2px solid green;
+}
+#CashOutForm h1 {
+  margin-bottom: 0;
+  margin-left: 0;
+  display: block;
+}
+#CashOutForm .form-element {
+  width: 200px;
+}
+#CashOutForm .form-element input {
+  width: 100%;
+}
+#CashOutForm .general-message {
+  text-align: center;
+  font-size: 14px;
+}
+#CashOutForm .success-message {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+#CashoutYTDAndTaxInfo {
+  margin-top: 20px;
+}
+#CashoutYTD {
+  margin-bottom: 10px;
+}
+#CashOutForm span.highlight {
+  font-weight: bold;
+}
+.space-above {
+  padding-top: 7px;
+}
+h3 {
+  display: block;
+}
+#CashOutHelp li {
+  list-style-type: disc;
+  list-style-position: inside;
+}
+#CashOutHelp h2 {
+  display: block;
+}
+.cash-out-robux .row-title {
+  font-size: 52px;
+  color: #ccc;
+  float: right;
+  line-height: 52px;
+  letter-spacing: -3px;
+  padding-bottom: 6px;
+}
+.cash-out-robux .row-content {
+  width: 160px;
+  float: right;
+  margin-left: 15px;
+  position: relative;
+  top: 5px;
+}
+.field-validation-error {
+  background-color: #fae5e5;
+  border: 1px solid #c00;
+  padding: 3px 3px;
+}
+/* ~/CSS/Pages/Upgrades/BuildersClubPanel.css */
+#RightColumnWrapper {
+  border-left: 1px solid #ccc;
+  padding-left: 15px;
+}
+#RightColumnWrapper .cellDivider {
+  border-bottom: 1px solid #ccc;
+}
+#RightColumnWrapper .cell {
+  width: 90%;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+#RightColumnWrapper .giftCardImage {
+  padding-left: 50px;
+}
+#RightColumnWrapper .giftCardButton {
+  float: left;
+  margin-right: 50px;
+}
+#RightColumnWrapper .redeemLink {
+  font-size: 12px;
+  position: relative;
+  top: 5px;
+}
+#RightColumnWrapper .cancelLink {
+  font-size: 12px;
+  margin-left: 15px;
+  position: relative;
+  bottom: 7px;
+}
+#RightColumnWrapper .gameCardButton {
+  float: left;
+  margin-right: 25px;
+}
+#RightColumnWrapper .gameCardControls {
+  margin-top: 10px;
+}
+#BCPageContainer #CashOutWidget {
+  border: none;
+}

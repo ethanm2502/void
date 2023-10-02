@@ -1,0 +1,2 @@
+RewriteEngine on
+RewriteRule . /v1/groupdata.php [L]

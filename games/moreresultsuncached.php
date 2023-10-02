@@ -1,0 +1,1 @@
+<?php require ($_SERVER['DOCUMENT_ROOT'].'/games/moreresultscached.php'); ?>

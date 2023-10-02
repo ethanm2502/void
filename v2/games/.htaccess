@@ -1,0 +1,4 @@
+RewriteEngine On
+DirectorySlash Off
+RewriteOptions AllowNoSlash
+RewriteRule ^ /v2/gamesdata.php [L]

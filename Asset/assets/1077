@@ -1,0 +1,75 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<Meta name="ExplicitAutoJoints">true</Meta>
+	<External>null</External>
+	<External>nil</External>
+	<Item class="CharacterMesh" referent="RBX64CA4B7B70B243E4BF49814656EE7ADF">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<int64 name="BaseTextureId">0</int64>
+			<token name="BodyPart">2</token>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<int64 name="MeshId">133936455</int64>
+			<string name="Name">Headless Horseman Left Arm</string>
+			<int64 name="OverlayTextureId">133936439</int64>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+		</Properties>
+	</Item>
+	<Item class="CharacterMesh" referent="RBXCC7E495A46C944C496D3E244E8A859C2">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<int64 name="BaseTextureId">0</int64>
+			<token name="BodyPart">4</token>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<int64 name="MeshId">133936488</int64>
+			<string name="Name">Headless Horseman Left Leg</string>
+			<int64 name="OverlayTextureId">133936439</int64>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+		</Properties>
+	</Item>
+	<Item class="CharacterMesh" referent="RBXE9906B1BB94543CEA18858E615F049F9">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<int64 name="BaseTextureId">0</int64>
+			<token name="BodyPart">3</token>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<int64 name="MeshId">133936497</int64>
+			<string name="Name">Headless Horseman Right Arm</string>
+			<int64 name="OverlayTextureId">133936439</int64>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+		</Properties>
+	</Item>
+	<Item class="CharacterMesh" referent="RBX482B79AC5AE94B798887EAEB49E421B6">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<int64 name="BaseTextureId">0</int64>
+			<token name="BodyPart">5</token>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<int64 name="MeshId">133936505</int64>
+			<string name="Name">Headless Horseman Right Leg</string>
+			<int64 name="OverlayTextureId">133936439</int64>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+		</Properties>
+	</Item>
+	<Item class="CharacterMesh" referent="RBX0E764E3B827A4F44A33969FD71B370A7">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<int64 name="BaseTextureId">0</int64>
+			<token name="BodyPart">1</token>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<int64 name="MeshId">133936470</int64>
+			<string name="Name">Headless Horseman Torso</string>
+			<int64 name="OverlayTextureId">133936439</int64>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+		</Properties>
+	</Item>
+</roblox>

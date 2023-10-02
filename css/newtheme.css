@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap');
+body {
+    background-color: #1c1e1f!important;
+    color: #d0ccc6!important;
+    font-family: 'Quicksand', sans-serif!important;
+}
+
+#Body {
+    background-color: #1c1e1f!important
+}
+
+#BodyWrapper {
+    background-color: #1c1e1f!important
+}
+
+.tab-container+div>div {
+    background-color: #1c1e1f!important
+}
+
+.content {
+    background-color: #1c1e1f!important
+}
+
+.section-content {
+    background-color: #ff000029!important;
+    border-radius: 15px
+}
+
+.large-card {
+    background-color: #2a2d2e!important;
+    border-radius: 15px
+}
+
+.card {
+    background-color: #2a2d2e!important;
+    border-radius: 15px
+}
+
+.game-card-container {
+    background-color:   #320000!important
+}
+
+.item-card-container {
+    background-color: #2a2d2e!important
+}
+
+.container-footer {
+    background-color: #2a2d2e!important
+}
+
+.rbx-header {
+    background-color: #191b1d!important
+}
+
+.navbar {
+    background-color: #191b1d!important
+}
+
+#sidebar {
+    background-color: #191b1d!important
+}
+
+.rbx-left-col {
+    background-color: #191b1d!important
+}
+
+.rbx-left-col li a {
+    color: #d0ccc6!important
+}
+
+.alert-info {
+    background-color: #f57c00!important
+}
+
+.games-list-container {
+    background-color: #1c1e1f!important
+}
+
+.tab-container>.tab-active {
+    background-color: #2a2d2e!important
+}
+
+.tab-container>div {
+    background-color: #2a2d2e!important
+}
+
+a.tab-item {
+    color: #d0ccc6!important
+}
+
+a.tab-item-selected {
+    background-color: #2a2d2e!important
+}
+
+.nav-tabs>li>a {
+    background-color: #ff000029!important;
+}
+
+.rbx-tabs-horizontal .nav-tabs {
+    box-shadow: 0 0 0 rgb(150 150 150/74%)!important;
+    background-color: #ff000029!important;
+}
+
+.rbx-tabs-horizontal .rbx-tab-heading {
+    color: #d0ccc6!important
+}
+
+.btn-control-md {
+    background-color: #2c2c2c!important;
+    color: #d0ccc6!important
+}
+
+.btn-control-md[disabled] {
+    background-color: #111!important
+}
+
+.btn-secondary-xs{
+    background: linear-gradient(180deg, #4B91F7 0%, #367AF6 100%)!important;
+    border-color: linear-gradient(180deg, #4B91F7 0%, #367AF6 100%)!important;
+    box-shadow: 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
+}
+
+.btn-control-md.disabled {
+    background-color: #111!important
+}
+
+.horizontally-scrollable{
+    transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+}
+
+.rbx-tab {
+    color: #d0ccc6!important
+}
+
+.nav-tabs>li.active>a,.nav-tabs>li.active>a:hover {
+    color: #fff!important
+}
+
+h5 {
+    color: #d0ccc6!important;
+    font-family: 'Quicksand', sans-serif!important;
+}
+
+h4 {
+    color: #d0ccc6!important;
+    font-family: 'Quicksand', sans-serif!important;
+}
+
+h3 {
+    color: #d0ccc6!important;
+    font-family: 'Quicksand', sans-serif!important;
+}
+
+h2 {
+    color: #d0ccc6!important;
+    font-family: 'Quicksand', sans-serif!important;
+}
+
+h1 {
+    color: #d0ccc6!important;
+    font-family: 'Quicksand', sans-serif!important;
+}
+
+h1 a,h1 a:visited {
+    color: #d0ccc6!important
+}
+
+div#catalog .selected {
+    color: #d0ccc6!important
+}
+
+.SmallCatalogItemView {
+    background: #2c2c2c!important
+}
+
+.CatalogItemInner {
+    background: #2c2c2c!important
+}
+
+.HoverInfo,.CatalogItemInner:hover .HoverInfo {
+    color: #666!important
+}
+
+.CatalogItemInfoLabel,.CatalogItemInner:hover .CatalogItemInfoLabel {
+    color: #d0ccc6!important
+}
+
+.stack .stack-list .stack-row {
+    background-color: #ff000029!important;
+    border-radius: 15px;
+    box-shadow: 0 0 0 rgb(150 150 150/74%)!important
+}
+
+.avatar-card-container {
+    background-color: #ff000029!important;
+    border-radius: 15px
+}
+
+.dropdown-menu {
+    background-color: #5F1516!important;
+    color: #d0ccc6!important; 
+}
+
+.rbx-header .rbx-navbar-search .rbx-navbar-search-option.selected {
+    background-color: #ff000029!important;
+}
+
+.profile-avatar-left {
+    background-color: #ff000029!important;
+}
+
+.rbx-header .rbx-navbar-icon-group li .popover-content .rbx-menu-item {
+    color: #d0ccc6!important
+}
+
+.dropdown-menu li:hover {
+    background-color: #5F1516!important;
+}
+
+.input-group-btn .input-dropdown-btn {
+    background-color: #5F1516!important;
+    color: #d0ccc6!important
+}
+
+.popover-content .dropdown-menu li a {
+    color: #d0ccc6!important
+}
+
+.text {
+    color: #d0ccc6!important
+}
+
+.request-error-page-content .default-error-page {
+    background-color: #ff000029!important;
+    color: #d0ccc6!important
+}
+
+.small {
+    color: #d0ccc6!important
+}
+
+.form-label {
+    color: #d0ccc6!important
+}
+
+.verticaltab.selected {
+    background-color: #313536!important
+}
+
+.verticaltab a {
+    color: #d0ccc6!important
+}
+
+.rbx-login-partial-legacy {
+    background-color: #2a2d2ec7!important;
+    border-radius: 5px!important
+}
+
+#build-page table.section-header label.checkbox-label {
+    color: #d0ccc6!important
+}
+
+#build-page .totals-label {
+    color: #d0ccc6!important
+}
+
+#build-page .item-table .totals-label span {
+    color: #999!important
+}
+
+#build-page .gear-button-wrapper {
+    background-color: transparent!important;
+    border-color: transparent!important
+}
+
+.slide-switcher .slide-item-container .slide-item-container-right {
+    background-color: #ff000029!important;
+}
+
+.para-overflow:after {
+    background-color: #fff0!important
+}
+
+.para-overflow-toggle:after {
+    background-color: #fff0!important
+}
+
+.client-toolbox-inner {
+    background: #1c1e1f!important
+}
+
+.client-toolbox-creator {
+    color: #d0ccc6!important
+}
+
+.dropdown-menu li:hover {
+    background-color: #5F1516!important;
+}
+
+.dropdown-menu a:hover {
+    background-color: #5F1516!important;
+}
+
+#container .form-row {
+    color: #d0ccc6!important
+}
+
+.modal-content {
+    background-color: #ff000029!important;
+}
+
+.store-card {
+    background-color: #ff000029!important;
+}
+
+.messageread {
+    background-color: #1f2122!important
+}
+
+.btn-control-xs{
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset!important;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1)!important;
+    background-color: #FAFBFC!important;
+    border: 1px solid rgba(27, 31, 35, 0.15)!important;
+    border-radius: 6px!important;
+}
+.btn-control-xs:hover{
+    background-color: #F3F4F6!important;
+    text-decoration: none!important;
+    transition-duration: 0.1s!important;
+}
+.btn-control-xs:focus{
+    outline: 1px transparent!important;
+}
+.ph-modal-popup{
+    background-color: #ff000029!important;
+}
+.ph-installinstructions{
+    background-color: #ff000029!important;  
+}

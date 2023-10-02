@@ -1,0 +1,57 @@
+body{
+    font-family: "Source Sans Pro",Arial,Helvetica,sans-serif!important;
+}
+h1{
+    font-family: "Source Sans Pro",Arial,Helvetica,sans-serif!important;
+}
+h2{
+    font-family: "Source Sans Pro",Arial,Helvetica,sans-serif!important;
+}
+h3{
+    font-family: "Source Sans Pro",Arial,Helvetica,sans-serif!important;
+}
+h4{
+    font-family: "Source Sans Pro",Arial,Helvetica,sans-serif!important;
+}
+h5{
+    font-family: "Source Sans Pro",Arial,Helvetica,sans-serif!important;
+}
+.icon-nav-search{
+    background-image: url(/img/Shared/navigation_02012016_light.svg)!important
+}
+.icon-nav-home{
+    background-image: url(/img/Shared/navigation_02012016_light.svg)!important
+}
+.icon-nav-profile{
+    background-image: url(/img/Shared/navigation_02012016_light.svg)!important
+}   
+.icon-nav-message{
+    background-image: url(/img/Shared/navigation_02012016_light.svg)!important
+}
+.icon-nav-friends{
+    background-image: url(/img/Shared/navigation_02012016_light.svg)!important
+}
+.icon-nav-charactercustomizer{
+    background-image: url(/img/Shared/navigation_02012016_light.svg)!important
+}
+.icon-nav-inventory{
+    background-image: url(/img/Shared/navigation_02012016_light.svg)!important
+}
+.icon-nav-trade{
+    background-image: url(/img/Shared/navigation_02012016_light.svg)!important
+}
+.icon-nav-group{
+    background-image: url(/img/Shared/navigation_02012016_light.svg)!important
+}
+.icon-nav-forum{
+    background-image: url(/img/Shared/navigation_02012016_light.svg)!important
+}
+.icon-nav-blog{
+    background-image: url(/img/Shared/navigation_02012016_light.svg)!important
+}
+.icon-more{
+    background-image: url(/img/Shared/generic_10252016_light.svg)!important
+}
+.icon-sorting{
+    background-image: url(/img/Shared/generic_10252016_light.svg)!important
+}

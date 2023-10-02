@@ -1,0 +1,203 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.voidrev.us/roblox.xsd" version="4">
+	<External>null</External>
+	<External>nil</External>
+	<Item class="Accessory" referent="RBXEE04017D83A2437D82FCB701A2FC8EA3">
+		<Properties>
+			<CoordinateFrame name="AttachmentPoint">
+				<X>0</X>
+				<Y>0</Y>
+				<Z>0</Z>
+				<R00>1</R00>
+				<R01>0</R01>
+				<R02>0</R02>
+				<R10>0</R10>
+				<R11>1</R11>
+				<R12>0</R12>
+				<R20>0</R20>
+				<R21>0</R21>
+				<R22>1</R22>
+			</CoordinateFrame>
+			<string name="Name">Bloxxercap</string>
+		</Properties>
+		<Item class="Part" referent="RBX1557AE8CFBC64D7F879056E429C8D816">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">194</int>
+				<CoordinateFrame name="CFrame">
+					<X>9.32506561</X>
+					<Y>5.50000477</Y>
+					<Z>94.5766449</Z>
+					<R00>-0.615393877</R00>
+					<R01>4.84399676e-009</R01>
+					<R02>-0.788220584</R02>
+					<R10>7.87137466e-009</R10>
+					<R11>0.99999994</R11>
+					<R12>4.14442183e-016</R12>
+					<R20>0.788220584</R20>
+					<R21>-6.20437968e-009</R21>
+					<R22>-0.615393877</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">true</bool>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">true</bool>
+				<token name="Material">256</token>
+				<string name="Name">Handle</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">0</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1</Y>
+					<Z>2</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBXF5F4CC089E494BDCA07D30DF9B6AF12B">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><url>http://www.roblox.com/asset/?id=16190466</url></Content>
+					<token name="MeshType">5</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+					<Content name="TextureId"><url>rbxassetid://73</url></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Attachment" referent="RBX72BFCC3EF85F439AAD6B5B6E9C62237F">
+				<Properties>
+					<CoordinateFrame name="CFrame">
+						<X>8.65838956e-009</X>
+						<Y>0.0999999046</Y>
+						<Z>-0.000272244215</Z>
+						<R00>1</R00>
+						<R01>7.87137555e-009</R01>
+						<R02>-3.26223034e-024</R02>
+						<R10>-7.87137555e-009</R10>
+						<R11>1</R11>
+						<R12>-4.1444221e-016</R12>
+						<R20>0</R20>
+						<R21>4.1444221e-016</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">HatAttachment</string>
+					<bool name="Visible">false</bool>
+				</Properties>
+			</Item>
+			<Item class="ParticleEmitter" referent="RBX31A62576C37849128AED28711AEC05FD">
+				<Properties>
+					<Vector3 name="Acceleration">
+						<X>0</X>
+						<Y>-4.5</Y>
+						<Z>0</Z>
+					</Vector3>
+					<ColorSequence name="Color">0 1 0 0.0156863 0 1 1 0 0.0156863 0 </ColorSequence>
+					<float name="Drag">0</float>
+					<token name="EmissionDirection">1</token>
+					<bool name="Enabled">true</bool>
+					<NumberRange name="Lifetime">0.5 1 </NumberRange>
+					<float name="LightEmission">0</float>
+					<bool name="LockedToPart">true</bool>
+					<string name="Name">ParticleEmitter</string>
+					<float name="Rate">10</float>
+					<NumberRange name="RotSpeed">50 50 </NumberRange>
+					<NumberRange name="Rotation">500 500 </NumberRange>
+					<NumberSequence name="Size">0 0.3 0 1 0.3 0 </NumberSequence>
+					<NumberRange name="Speed">2 2 </NumberRange>
+					<Content name="Texture"><url>rbxasset://textures/particles/sparkles_main.dds</url></Content>
+					<NumberSequence name="Transparency">0 0 0 1 0 0 </NumberSequence>
+					<float name="VelocityInheritance">0</float>
+					<float name="VelocitySpread">50</float>
+					<float name="ZOffset">0</float>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX207243A6DC51419C876C7EAF065262FC">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Script</string>
+					<string name="ScriptGuid"></string>
+					<ProtectedString name="Source"><![CDATA[local part = script.Parent
+local emitter = part:FindFirstChild("ParticleEmitter")
+
+if not emitter then
+    emitter = Instance.new("ParticleEmitter")
+    emitter.Parent = part
+end
+
+local speed = 1 -- Adjust the speed of the color cycle
+local t = 0
+
+while true do
+    local r = math.sin(t) * 0.5 + 0.5
+    local g = math.sin(t + 2) * 0.5 + 0.5
+    local b = math.sin(t + 4) * 0.5 + 0.5
+
+    local color = Color3.new(r, g, b)
+
+    emitter.Color = ColorSequence.new(color)
+    emitter.Size = NumberSequence.new(0.3)
+    emitter.Transparency = NumberSequence.new(0)
+    emitter.Lifetime = NumberRange.new(0.5, 1)
+
+    t = t + 0.02 * speed
+
+    wait(0.1) -- Adjust the wait time to control the speed of the color change
+end
+]]></ProtectedString>
+				</Properties>
+			</Item>
+		</Item>
+	</Item>
+</roblox>

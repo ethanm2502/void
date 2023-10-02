@@ -1,0 +1,1 @@
+{"HttpAccessAllowed":true,"PersistenceAccessAllowed":true,"CreatePlaceAllowed":false,"PointsServiceAllowed":true}

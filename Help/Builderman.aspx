@@ -1,0 +1,1 @@
+<?php header("Location: https://en.help.roblox.com"); ?>

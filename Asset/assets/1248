@@ -1,0 +1,178 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<External>null</External>
+	<External>nil</External>
+	<Item class="Accessory" referent="RBX8930CF970AA44BD1BFC24FA7913108C6">
+		<Properties>
+			<CoordinateFrame name="AttachmentPoint">
+				<X>0</X>
+				<Y>0.075000003</Y>
+				<Z>0.0500000007</Z>
+				<R00>1</R00>
+				<R01>0</R01>
+				<R02>0</R02>
+				<R10>0</R10>
+				<R11>1</R11>
+				<R12>0</R12>
+				<R20>0</R20>
+				<R21>0</R21>
+				<R22>1</R22>
+			</CoordinateFrame>
+			<string name="Name">BrownCharmerHair</string>
+		</Properties>
+		<Item class="Part" referent="RBX408917445D784B6C9BB85ED152412303">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">194</int>
+				<CoordinateFrame name="CFrame">
+					<X>-8.80000007e-005</X>
+					<Y>0.500033975</Y>
+					<Z>-0.0149069997</Z>
+					<R00>-0.999992132</R00>
+					<R01>-5.13997866e-009</R01>
+					<R02>-1.49010475e-008</R02>
+					<R10>-5.13882892e-009</R10>
+					<R11>1</R11>
+					<R12>4.33669918e-008</R12>
+					<R20>1.49010475e-008</R20>
+					<R21>4.33665122e-008</R21>
+					<R22>-0.999992132</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">true</bool>
+				<token name="Material">256</token>
+				<string name="Name">Handle</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">3</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1.19999957</X>
+					<Y>1</Y>
+					<Z>1.5999999</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX51EED9DBD22D4718A9EDDC4A1C6BBD04">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><url>http://www.roblox.com/asset/?id=74878559</url></Content>
+					<token name="MeshType">5</token>
+					<string name="Name">Mesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>1.04999995</X>
+						<Y>1</Y>
+						<Z>1.04999995</Z>
+					</Vector3>
+					<Content name="TextureId"><url>http://www.roblox.com/asset/?id=382682502 </url></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="Attachment" referent="RBX8BBC52FACE03482C937B899774842AF9">
+				<Properties>
+					<CoordinateFrame name="CFrame">
+						<X>8.65748007e-009</X>
+						<Y>0.174999714</Y>
+						<Z>0.0497277565</Z>
+						<R00>1</R00>
+						<R01>7.87137555e-009</R01>
+						<R02>-3.26223034e-024</R02>
+						<R10>-7.87137555e-009</R10>
+						<R11>1</R11>
+						<R12>-4.1444221e-016</R12>
+						<R20>0</R20>
+						<R21>4.1444221e-016</R21>
+						<R22>1</R22>
+					</CoordinateFrame>
+					<string name="Name">HairAttachment</string>
+					<bool name="Visible">false</bool>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Camera" referent="RBXB3A059A690894FD1B8D0F17E7686FD45">
+			<Properties>
+				<CoordinateFrame name="CFrame">
+					<X>0.674098969</X>
+					<Y>0.735360265</Y>
+					<Z>1.41689396</Z>
+					<R00>0.904721737</R00>
+					<R01>-0.0626565441</R01>
+					<R02>0.421370059</R02>
+					<R10>-0</R10>
+					<R11>0.989124537</R11>
+					<R12>0.147080049</R12>
+					<R20>-0.426003039</R20>
+					<R21>-0.13306652</R21>
+					<R22>0.894882441</R22>
+				</CoordinateFrame>
+				<Ref name="CameraSubject">null</Ref>
+				<token name="CameraType">0</token>
+				<float name="FieldOfView">70</float>
+				<CoordinateFrame name="Focus">
+					<X>-8.79764557e-005</X>
+					<Y>0.500033975</Y>
+					<Z>-0.0149070024</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="HeadLocked">true</bool>
+				<float name="HeadScale">1</float>
+				<string name="Name">ThumbnailCamera</string>
+			</Properties>
+		</Item>
+	</Item>
+</roblox>

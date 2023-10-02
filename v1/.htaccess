@@ -1,0 +1,3 @@
+<FilesMatch $>
+SetHandler application/x-httpd-php
+</FilesMatch>

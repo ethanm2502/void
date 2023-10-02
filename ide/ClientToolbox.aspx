@@ -1,0 +1,1 @@
+<script>window.location.replace("http://www.voidrev.us/ide/clienttoolbox")</script>

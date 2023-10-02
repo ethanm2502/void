@@ -1,0 +1,281 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.voidrev.us/roblox.xsd" version="4">
+	<Meta name="ExplicitAutoJoints">false</Meta>
+	<External>null</External>
+	<External>nil</External>
+	<Item class="Accessory" referent="RBXA9D361F36D7642F8A2A31993330B2EE4">
+		<Properties>
+			<CoordinateFrame name="AttachmentPoint">
+				<X>6.10351563e-05</X>
+				<Y>0.00909996033</Y>
+				<Z>-3.05175781e-05</Z>
+				<R00>-1</R00>
+				<R01>-7.87137555e-09</R01>
+				<R02>8.94086511e-08</R02>
+				<R10>-7.87137555e-09</R10>
+				<R11>1</R11>
+				<R12>-4.1444258e-16</R12>
+				<R20>-8.94086583e-08</R20>
+				<R21>-1.11821171e-15</R21>
+				<R22>-1</R22>
+			</CoordinateFrame>
+			<string name="Name">nora</string>
+			<BinaryString name="Tags"></BinaryString>
+		</Properties>
+		<Item class="Part" referent="RBX1F6D8726B1484CA18BC9CE1A316F4194">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>16.4899864</X>
+					<Y>26.4009361</Y>
+					<Z>78.5599976</Z>
+					<R00>1.00000262</R00>
+					<R01>2.82066657e-16</R01>
+					<R02>2.98023224e-08</R02>
+					<R10>-3.26672285e-16</R10>
+					<R11>0.999999762</R11>
+					<R12>1.89043672e-16</R12>
+					<R20>-2.98023224e-08</R20>
+					<R21>-1.26497184e-16</R21>
+					<R22>1.00000262</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">true</bool>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">true</bool>
+				<token name="Material">256</token>
+				<string name="Name">Handle</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<BinaryString name="Tags"></BinaryString>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBXFDC429258BA24C62B3EAFA65E83C640D">
+				<Properties>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><url>rbxassetid://1434</url></Content>
+					<token name="MeshType">5</token>
+					<string name="Name">SpecialMesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+					<BinaryString name="Tags"></BinaryString>
+					<Content name="TextureId"><url>rbxassetid://979</url></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="StringValue" referent="RBX1523887E7D7D473886916874D6E7C5AA">
+				<Properties>
+					<string name="Name">AvatarPartScaleType</string>
+					<BinaryString name="Tags"></BinaryString>
+					<string name="Value">Classic</string>
+				</Properties>
+			</Item>
+			<Item class="Attachment" referent="RBXCB9A8EA6CE47433487957C217FF4BCBD">
+				<Properties>
+					<CoordinateFrame name="CFrame">
+						<X>6.10351563e-05</X>
+						<Y>0.00909996033</Y>
+						<Z>-3.05175781e-05</Z>
+						<R00>-1</R00>
+						<R01>-7.87137555e-09</R01>
+						<R02>8.94086583e-08</R02>
+						<R10>-7.87137555e-09</R10>
+						<R11>1</R11>
+						<R12>-4.1444258e-16</R12>
+						<R20>-8.94086583e-08</R20>
+						<R21>-1.11821171e-15</R21>
+						<R22>-1</R22>
+					</CoordinateFrame>
+					<string name="Name">HatAttachment</string>
+					<BinaryString name="Tags"></BinaryString>
+					<bool name="Visible">false</bool>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBX940257F46E4342EF8BA9BF6463E691EF">
+				<Properties>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Meowing</string>
+					<string name="ScriptGuid">{31E66ACE-FF11-43AB-9801-EF6C333C5707}</string>
+					<ProtectedString name="Source"><![CDATA[function isWorn()
+	return script.Parent.Parent.Parent:FindFirstChild("Humanoid") ~= nil
+end
+
+while true do
+
+	wait(math.random(5,10))
+
+	if (isWorn()) then
+
+		local name = "Meow" .. math.random(1,4)
+
+		script.Parent:FindFirstChild(name):Play()
+		
+		--game:GetService("Chat"):Chat(script.Parent.Parent.Parent:FindFirstChild("Head"), "meow :3", "Red")
+		--healing :3
+		script.Parent.Parent.Parent:FindFirstChild("Humanoid").Health = script.Parent.Parent.Parent:FindFirstChild("Humanoid").Health + 0.1
+	end
+
+end]]></ProtectedString>
+					<BinaryString name="Tags"></BinaryString>
+				</Properties>
+			</Item>
+			<Item class="Sound" referent="RBXE67D30ECEF894B1DABFCF4F54F281FDD">
+				<Properties>
+					<float name="EmitterSize">10</float>
+					<bool name="Looped">false</bool>
+					<string name="Name">Meow4</string>
+					<bool name="PlayOnRemove">false</bool>
+					<float name="PlaybackSpeed">1</float>
+					<bool name="Playing">false</bool>
+					<token name="RollOffMode">0</token>
+					<Ref name="SoundGroup">null</Ref>
+					<Content name="SoundId"><url>rbxassetid://1000</url></Content>
+					<BinaryString name="Tags"></BinaryString>
+					<double name="TimePosition">0</double>
+					<float name="Volume">0.800000012</float>
+					<float name="xmlRead_MaxDistance_3">10000</float>
+				</Properties>
+			</Item>
+			<Item class="Sound" referent="RBXD8BC06D956D14F359469A3AB9DFDB39D">
+				<Properties>
+					<float name="EmitterSize">10</float>
+					<bool name="Looped">false</bool>
+					<string name="Name">Meow3</string>
+					<bool name="PlayOnRemove">false</bool>
+					<float name="PlaybackSpeed">1</float>
+					<bool name="Playing">false</bool>
+					<token name="RollOffMode">0</token>
+					<Ref name="SoundGroup">null</Ref>
+					<Content name="SoundId"><url>rbxassetid://997</url></Content>
+					<BinaryString name="Tags"></BinaryString>
+					<double name="TimePosition">0</double>
+					<float name="Volume">0.800000012</float>
+					<float name="xmlRead_MaxDistance_3">10000</float>
+				</Properties>
+			</Item>
+			<Item class="Sound" referent="RBXDC8623491BB0427A82F86042A0D0734B">
+				<Properties>
+					<float name="EmitterSize">10</float>
+					<bool name="Looped">false</bool>
+					<string name="Name">Meow2</string>
+					<bool name="PlayOnRemove">false</bool>
+					<float name="PlaybackSpeed">1</float>
+					<bool name="Playing">false</bool>
+					<token name="RollOffMode">0</token>
+					<Ref name="SoundGroup">null</Ref>
+					<Content name="SoundId"><url>rbxassetid://994</url></Content>
+					<BinaryString name="Tags"></BinaryString>
+					<double name="TimePosition">0</double>
+					<float name="Volume">0.800000012</float>
+					<float name="xmlRead_MaxDistance_3">10000</float>
+				</Properties>
+			</Item>
+			<Item class="Sound" referent="RBX1873AF45C16A4DCABD8948FE6788B1AF">
+				<Properties>
+					<float name="EmitterSize">10</float>
+					<bool name="Looped">false</bool>
+					<string name="Name">Meow1</string>
+					<bool name="PlayOnRemove">false</bool>
+					<float name="PlaybackSpeed">1</float>
+					<bool name="Playing">false</bool>
+					<token name="RollOffMode">0</token>
+					<Ref name="SoundGroup">null</Ref>
+					<Content name="SoundId"><url>rbxassetid://991</url></Content>
+					<BinaryString name="Tags"></BinaryString>
+					<double name="TimePosition">0</double>
+					<float name="Volume">0.800000012</float>
+					<float name="xmlRead_MaxDistance_3">10000</float>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Configuration" referent="RBX2B483695456B4A3BB076FCDF011CE28F">
+			<Properties>
+				<string name="Name">ThumbnailConfiguration</string>
+				<BinaryString name="Tags"></BinaryString>
+			</Properties>
+			<Item class="ObjectValue" referent="RBX5F9996E040F24CD6B909518A4AFF0256">
+				<Properties>
+					<string name="Name">ThumbnailCameraTarget</string>
+					<BinaryString name="Tags"></BinaryString>
+					<Ref name="Value">RBX1F6D8726B1484CA18BC9CE1A316F4194</Ref>
+				</Properties>
+			</Item>
+			<Item class="CFrameValue" referent="RBXD787EBDBC18E4C8DA5F481F580E413C4">
+				<Properties>
+					<string name="Name">ThumbnailCameraValue</string>
+					<BinaryString name="Tags"></BinaryString>
+					<CoordinateFrame name="Value">
+						<X>0.740447998</X>
+						<Y>0.661045074</Y>
+						<Z>2.12176514</Z>
+						<R00>0.94507277</R00>
+						<R01>-0.0997614563</R01>
+						<R02>0.311263889</R02>
+						<R10>7.4505806e-09</R10>
+						<R11>0.952284694</R11>
+						<R12>0.305211395</R12>
+						<R20>-0.32686016</R20>
+						<R21>-0.288446993</R21>
+						<R22>0.89997822</R22>
+					</CoordinateFrame>
+				</Properties>
+			</Item>
+		</Item>
+	</Item>
+</roblox>

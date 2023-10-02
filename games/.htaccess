@@ -1,0 +1,9 @@
+<FilesMatch "^[^.]+$">
+    SetHandler application/x-httpd-php
+</FilesMatch>
+# Redirect non-existing pages to index.php
+Options +SymLinksIfOwnerMatch
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /games/process.php [L]

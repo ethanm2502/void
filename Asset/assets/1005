@@ -1,0 +1,312 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.cat/roblox.xsd" version="4">
+	<Meta name="ExplicitAutoJoints">true</Meta>
+	<External>null</External>
+	<External>nil</External>
+	<Item class="Accessory" referent="RBX4F5B28DE76A040F4A2252C3FE5E6D99C">
+		<Properties>
+			<CoordinateFrame name="AttachmentPoint">
+				<X>6.10351563e-05</X>
+				<Y>0.00909996033</Y>
+				<Z>-3.05175781e-05</Z>
+				<R00>-1</R00>
+				<R01>-7.87137555e-09</R01>
+				<R02>8.94086511e-08</R02>
+				<R10>-7.87137555e-09</R10>
+				<R11>1</R11>
+				<R12>-4.1444258e-16</R12>
+				<R20>-8.94086583e-08</R20>
+				<R21>-1.11821171e-15</R21>
+				<R22>-1</R22>
+			</CoordinateFrame>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<string name="Name">Noras HatAccessory</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+		</Properties>
+		<Item class="Part" referent="RBX580865847ED24FCFB5FCBE53BABA0120">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>16.4899864</X>
+					<Y>26.4009361</Y>
+					<Z>78.5599976</Z>
+					<R00>1.00000262</R00>
+					<R01>2.82066657e-16</R01>
+					<R02>2.98023224e-08</R02>
+					<R10>-3.26672285e-16</R10>
+					<R11>0.999999762</R11>
+					<R12>1.89043672e-16</R12>
+					<R20>-2.98023224e-08</R20>
+					<R21>-1.26497184e-16</R21>
+					<R22>1.00000262</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">true</bool>
+				<bool name="CastShadow">true</bool>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">true</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Handle</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+			<Item class="SpecialMesh" referent="RBX13E36CB31A2B41CE8C98C9560D435162">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<token name="LODX">2</token>
+					<token name="LODY">2</token>
+					<Content name="MeshId"><url>https://voidrev.us/asset?id=856</url></Content>
+					<token name="MeshType">5</token>
+					<string name="Name">SpecialMesh</string>
+					<Vector3 name="Offset">
+						<X>0</X>
+						<Y>0</Y>
+						<Z>0</Z>
+					</Vector3>
+					<Vector3 name="Scale">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<Content name="TextureId"><url>https://voidrev.us/asset?id=979</url></Content>
+					<Vector3 name="VertexColor">
+						<X>1</X>
+						<Y>1</Y>
+						<Z>1</Z>
+					</Vector3>
+				</Properties>
+			</Item>
+			<Item class="StringValue" referent="RBX3FFAAFCF635A4AB0AFE8AAAFF71DB929">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<string name="Name">AvatarPartScaleType</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<string name="Value">Classic</string>
+				</Properties>
+			</Item>
+			<Item class="Attachment" referent="RBX1127CC1ABEF64652846777AC026B401A">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<CoordinateFrame name="CFrame">
+						<X>6.10351563e-05</X>
+						<Y>0.00909996033</Y>
+						<Z>-3.05175781e-05</Z>
+						<R00>-1</R00>
+						<R01>-7.87137555e-09</R01>
+						<R02>8.94086583e-08</R02>
+						<R10>-7.87137555e-09</R10>
+						<R11>1</R11>
+						<R12>-4.1444258e-16</R12>
+						<R20>-8.94086583e-08</R20>
+						<R21>-1.11821171e-15</R21>
+						<R22>-1</R22>
+					</CoordinateFrame>
+					<string name="Name">HatAttachment</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<bool name="Visible">false</bool>
+				</Properties>
+			</Item>
+			<Item class="Script" referent="RBXCB8D7B6C2B594A1E98F8A6DA2BBEE046">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<bool name="Disabled">false</bool>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">NoraMeowing</string>
+					<string name="ScriptGuid">{31E66ACE-FF11-43AB-9801-EF6C333C5707}</string>
+					<ProtectedString name="Source"><![CDATA[--hi it's me did u know that when cats purr it helps them heal a bit or smth? for me it's when i meow
+
+function isWorn()
+	return script.Parent.Parent.Parent:FindFirstChild("Humanoid") ~= nil
+end
+
+while true do
+
+	wait(math.random(7,20))
+
+	if (isWorn()) then
+
+		local name = "Meow" .. math.random(1,4)
+
+		script.Parent:FindFirstChild(name):Play()
+		
+		game:GetService("Chat"):Chat(script.Parent.Parent.Parent:FindFirstChild("Head"), "meow :3", "Red")
+		--healing :3
+		script.Parent.Parent.Parent:FindFirstChild("Humanoid").Health = script.Parent.Parent.Parent:FindFirstChild("Humanoid").Health + 0.1
+	end
+
+end]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+				</Properties>
+			</Item>
+			<Item class="Sound" referent="RBX1B97D5F19922474397F863EBC1C649AB">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<float name="EmitterSize">10</float>
+					<bool name="Looped">false</bool>
+					<string name="Name">Meow4</string>
+					<bool name="PlayOnRemove">false</bool>
+					<float name="PlaybackSpeed">1</float>
+					<bool name="Playing">false</bool>
+					<token name="RollOffMode">0</token>
+					<Ref name="SoundGroup">null</Ref>
+					<Content name="SoundId"><url>https://voidrev.us/asset?id=1000</url></Content>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<double name="TimePosition">0</double>
+					<float name="Volume">1.20000005</float>
+					<float name="xmlRead_MaxDistance_3">10000</float>
+				</Properties>
+			</Item>
+			<Item class="Sound" referent="RBX50075E45EE144755992F5584FF2AECBC">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<float name="EmitterSize">10</float>
+					<bool name="Looped">false</bool>
+					<string name="Name">Meow3</string>
+					<bool name="PlayOnRemove">false</bool>
+					<float name="PlaybackSpeed">1</float>
+					<bool name="Playing">false</bool>
+					<token name="RollOffMode">0</token>
+					<Ref name="SoundGroup">null</Ref>
+					<Content name="SoundId"><url>https://voidrev.us/asset?id=997</url></Content>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<double name="TimePosition">0</double>
+					<float name="Volume">1.20000005</float>
+					<float name="xmlRead_MaxDistance_3">10000</float>
+				</Properties>
+			</Item>
+			<Item class="Sound" referent="RBX009DFFCB569849D590F94D21ADA636C0">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<float name="EmitterSize">10</float>
+					<bool name="Looped">false</bool>
+					<string name="Name">Meow2</string>
+					<bool name="PlayOnRemove">false</bool>
+					<float name="PlaybackSpeed">1</float>
+					<bool name="Playing">false</bool>
+					<token name="RollOffMode">0</token>
+					<Ref name="SoundGroup">null</Ref>
+					<Content name="SoundId"><url>https://voidrev.us/asset?id=994</url></Content>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<double name="TimePosition">0</double>
+					<float name="Volume">1.20000005</float>
+					<float name="xmlRead_MaxDistance_3">10000</float>
+				</Properties>
+			</Item>
+			<Item class="Sound" referent="RBX88EF3D2F04194F398837B91C505EECF4">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<float name="EmitterSize">10</float>
+					<bool name="Looped">false</bool>
+					<string name="Name">Meow1</string>
+					<bool name="PlayOnRemove">false</bool>
+					<float name="PlaybackSpeed">1</float>
+					<bool name="Playing">false</bool>
+					<token name="RollOffMode">0</token>
+					<Ref name="SoundGroup">null</Ref>
+					<Content name="SoundId"><url>https://voidrev.us/asset?id=991</url></Content>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<double name="TimePosition">0</double>
+					<float name="Volume">1.20000005</float>
+					<float name="xmlRead_MaxDistance_3">10000</float>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Configuration" referent="RBX19E68197DF924C968645F788F0212907">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<string name="Name">ThumbnailConfiguration</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+			</Properties>
+			<Item class="ObjectValue" referent="RBX1BD1C04F2ED34A3D91886C9C60B73778">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<string name="Name">ThumbnailCameraTarget</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<Ref name="Value">RBX580865847ED24FCFB5FCBE53BABA0120</Ref>
+				</Properties>
+			</Item>
+			<Item class="CFrameValue" referent="RBX564AA83193724BE19F2C709D21616652">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<string name="Name">ThumbnailCameraValue</string>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<CoordinateFrame name="Value">
+						<X>0.740447998</X>
+						<Y>0.661045074</Y>
+						<Z>2.12176514</Z>
+						<R00>0.94507277</R00>
+						<R01>-0.0997614563</R01>
+						<R02>0.311263889</R02>
+						<R10>7.4505806e-09</R10>
+						<R11>0.952284694</R11>
+						<R12>0.305211395</R12>
+						<R20>-0.32686016</R20>
+						<R21>-0.288446993</R21>
+						<R22>0.89997822</R22>
+					</CoordinateFrame>
+				</Properties>
+			</Item>
+		</Item>
+	</Item>
+</roblox>

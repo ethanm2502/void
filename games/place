@@ -1,0 +1,1424 @@
+<?php
+include ($_SERVER['DOCUMENT_ROOT'].'/global.php');
+$CanSee2020 = $usr['CanSee2020'];
+if($CanSee2020 == 1){
+$gamequery = $con->prepare("SELECT id,icon,video,name,creatorid,description,MaxPlayers,version,active,banned,created,updated,visits,thumbnail1,thumbnail2,thumbnail3 FROM `games` WHERE `id` = :id");
+}else{
+$gamequery = $con->prepare("SELECT id,icon,video,name,creatorid,description,MaxPlayers,version,active,banned,created,updated,visits,thumbnail1,thumbnail2,thumbnail3 FROM `games` WHERE `id` = :id AND `version` != 2020");
+}
+$gamequery->bindValue(':id', $getid, PDO::PARAM_INT);
+$gamequery->execute();
+$game = $gamequery->fetch(PDO::FETCH_ASSOC);
+if(isset($game['id'])) {
+$uid = $usr['id'];
+$geticon = $game['icon'];
+$getthumb1 = $game['thumbnail1'];
+$getthumb2 = $game['thumbnail2'];
+$getthumb3 = $game['thumbnail3'];
+$video = $game['video'];
+$gamename = $game['name'];
+$gamecreatorid = $game['creatorid'];
+$description = $game['description'];
+$maxplayers = $game['MaxPlayers'];
+$version = $game['version'];
+$visits = $game['visits'];
+$active = $game['active'];
+$cuserquery = $con->prepare("SELECT username FROM `users` WHERE `id` = :id");
+$cuserquery->bindValue(':id', $gamecreatorid, PDO::PARAM_INT);
+$cuserquery->execute();
+$userstuff = $cuserquery->fetch(PDO::FETCH_ASSOC);
+$gamecreator = $userstuff['username'];
+$countfavequery = $con->prepare("SELECT count(*) FROM `faves` WHERE `assetId` = :assetID");
+$countfavequery->execute(['assetID' => $getid]);
+$favoritecount = $countfavequery->fetchColumn();
+$playercount = getPlayerCount($getid);
+$locale = getLocale(false,$getid);
+?>
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html class=ie8 ng-app=robloxApp>
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<html>
+<!--<![endif]-->
+<head data-machine-id=WEB1858>
+<title><?php echo NOXSSPlz($gamename);?> - Void</title>
+<meta http-equiv=X-UA-Compatible content="IE=edge,requiresActiveX=true">
+<meta charset=UTF-8>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<script>
+var Roblox = Roblox || {};
+Roblox.BundleDetector = (function() {
+var isMetricsApiEnabled = Roblox.BundleVerifierConstants && Roblox.BundleVerifierConstants.isMetricsApiEnabled;
+var loadStates = {
+loadSuccess: "loadSuccess",
+loadFailure: "loadFailure",
+executionFailure: "executionFailure"
+};
+var bundleContentTypes = {
+javascript: "javascript",
+css: "css"
+};
+var ephemeralCounterNames = {
+cdnPrefix: "CDNBundleError_",
+unknown: "CDNBundleError_unknown",
+cssError: "CssBundleError",
+jsError: "JavascriptBundleError",
+jsFileError: "JsFileExecutionError",
+resourceError: "ResourcePerformance_Error",
+resourceLoaded: "ResourcePerformance_Loaded"
+};
+return {
+jsBundlesLoaded: {},
+bundlesReported: {},
+counterNames: ephemeralCounterNames,
+loadStates: loadStates,
+bundleContentTypes: bundleContentTypes,
+timing: undefined,
+setTiming: function(windowTiming) {
+this.timing = windowTiming;
+},
+getLoadTime: function() {
+if(this.timing && this.timing.domComplete) {
+return this.getCurrentTime() - this.timing.domComplete;
+}
+},
+getCurrentTime: function() {
+return new Date().getTime();
+},
+getCdnProviderName: function(bundleUrl, callBack) {
+if(Roblox.BundleVerifierConstants.cdnLoggingEnabled) {
+var xhr = new XMLHttpRequest();
+xhr.open('GET', bundleUrl, true);
+xhr.onreadystatechange = function() {
+if(xhr.readyState === xhr.HEADERS_RECEIVED) {
+try {
+var headerValue = xhr.getResponseHeader("rbx-cdn-provider");
+if(headerValue) {
+callBack(headerValue);
+} else {
+callBack();
+}
+} catch(e) {
+callBack();
+}
+}
+};
+xhr.onerror = function() {
+callBack();
+};
+xhr.send();
+} else {
+callBack();
+}
+},
+getCdnProviderAndReportMetrics: function(bundleUrl, bundleName, loadState, bundleContentType) {
+this.getCdnProviderName(bundleUrl, function(cdnProviderName) {
+Roblox.BundleDetector.reportMetrics(bundleUrl, bundleName, loadState, bundleContentType, cdnProviderName);
+});
+},
+reportMetrics: function(bundleUrl, bundleName, loadState, bundleContentType, cdnProviderName) {
+if(!isMetricsApiEnabled || !bundleUrl || !loadState || !loadStates.hasOwnProperty(loadState) || !bundleContentType || !bundleContentTypes.hasOwnProperty(bundleContentType)) {
+return;
+}
+var xhr = new XMLHttpRequest();
+var metricsApiUrl = (Roblox.EnvironmentUrls && Roblox.EnvironmentUrls.metricsApi) || "https://metrics.voidrev.us";
+xhr.open("POST", metricsApiUrl + "/v1/bundle-metrics/report", true);
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.withCredentials = true;
+xhr.send(JSON.stringify({
+bundleUrl: bundleUrl,
+bundleName: bundleName || "",
+bundleContentType: bundleContentType,
+loadState: loadState,
+cdnProviderName: cdnProviderName,
+loadTimeInMilliseconds: this.getLoadTime() || 0
+}));
+},
+logToEphemeralStatistics: function(sequenceName, value) {
+var deviceType = Roblox.BundleVerifierConstants.deviceType;
+sequenceName += "_" + deviceType;
+var xhr = new XMLHttpRequest();
+xhr.open('POST', '/game/report-stats?name=' + sequenceName + "&value=" + value, true);
+xhr.withCredentials = true;
+xhr.send();
+},
+logToEphemeralCounter: function(ephemeralCounterName) {
+var deviceType = Roblox.BundleVerifierConstants.deviceType;
+ephemeralCounterName += "_" + deviceType;
+var xhr = new XMLHttpRequest();
+xhr.open('POST', '/game/report-event?name=' + ephemeralCounterName, true);
+xhr.withCredentials = true;
+xhr.send();
+},
+logToEventStream: function(failedBundle, ctx, cdnProvider, status) {
+var esUrl = Roblox.BundleVerifierConstants.eventStreamUrl,
+currentPageUrl = encodeURIComponent(window.location.href);
+var deviceType = Roblox.BundleVerifierConstants.deviceType;
+ctx += "_" + deviceType;
+var duration = 0;
+if(window.performance) {
+var perfTiming = window.performance.getEntriesByName(failedBundle);
+if(perfTiming.length > 0) {
+var data = perfTiming[0];
+duration = data.duration || 0;
+}
+}
+var params = "&evt=webBundleError&url=" + currentPageUrl + "&ctx=" + ctx + "&fileSourceUrl=" + encodeURIComponent(failedBundle) + "&cdnName=" + (cdnProvider || "unknown") + "&statusCode=" + (status || "unknown") + "&loadDuration=" + Math.floor(duration);
+var img = new Image();
+img.src = esUrl + params;
+},
+getCdnInfo: function(failedBundle, ctx, fileType) {
+if(Roblox.BundleVerifierConstants.cdnLoggingEnabled) {
+var xhr = new XMLHttpRequest();
+var counter = this.counterNames;
+xhr.open('GET', failedBundle, true);
+var cdnProvider;
+xhr.onreadystatechange = function() {
+if(xhr.readyState === xhr.HEADERS_RECEIVED) {
+cdnProvider = xhr.getResponseHeader("rbx-cdn-provider");
+if(cdnProvider && cdnProvider.length > 0) {
+Roblox.BundleDetector.logToEphemeralCounter(counter.cdnPrefix + cdnProvider + "_" + fileType);
+} else {
+Roblox.BundleDetector.logToEphemeralCounter(counter.unknown + "_" + fileType);
+}
+} else if(xhr.readyState === xhr.DONE) {
+Roblox.BundleDetector.logToEventStream(failedBundle, ctx, cdnProvider, xhr.status);
+}
+};
+xhr.onerror = function() {
+Roblox.BundleDetector.logToEphemeralCounter(counter.unknown + "_" + fileType);
+Roblox.BundleDetector.logToEventStream(failedBundle, ctx, counter.unknown);
+};
+xhr.send();
+} else {
+this.logToEventStream(failedBundle, ctx);
+}
+},
+reportResourceError: function(resourceName) {
+var ephemeralCounterName = this.counterNames.resourceError + "_" + resourceName;
+this.logToEphemeralCounter(ephemeralCounterName);
+},
+reportResourceLoaded: function(resourceName) {
+var loadTimeInMs = this.getLoadTime();
+if(loadTimeInMs) {
+var sequenceName = this.counterNames.resourceLoaded + "_" + resourceName;
+this.logToEphemeralStatistics(sequenceName, loadTimeInMs);
+}
+},
+reportBundleError: function(bundleTag) {
+var ephemeralCounterName, failedBundle, ctx, contentType;
+if(bundleTag.rel && bundleTag.rel === "stylesheet") {
+ephemeralCounterName = this.counterNames.cssError;
+failedBundle = bundleTag.href;
+ctx = "css";
+contentType = bundleContentTypes.css;
+} else {
+ephemeralCounterName = this.counterNames.jsError;
+failedBundle = bundleTag.src;
+ctx = "js";
+contentType = bundleContentTypes.javascript;
+}
+this.bundlesReported[failedBundle] = true;
+this.logToEphemeralCounter(ephemeralCounterName);
+this.getCdnInfo(failedBundle, ctx, ctx);
+var bundleName;
+if(bundleTag.dataset) {
+bundleName = bundleTag.dataset.bundlename;
+} else {
+bundleName = bundleTag.getAttribute('data-bundlename');
+}
+this.getCdnProviderAndReportMetrics(failedBundle, bundleName, loadStates.loadFailure, contentType);
+},
+bundleDetected: function(bundleName) {
+this.jsBundlesLoaded[bundleName] = true;
+},
+verifyBundles: function(document) {
+var ephemeralCounterName = this.counterNames.jsFileError,
+eventContext = ephemeralCounterName;
+var scripts = (document && document.scripts) || window.document.scripts;
+var errorsList = [];
+var bundleName;
+var monitor;
+for(var i = 0; i < scripts.length; i++) {
+var item = scripts[i];
+if(item.dataset) {
+bundleName = item.dataset.bundlename;
+monitor = item.dataset.monitor;
+} else {
+bundleName = item.getAttribute('data-bundlename');
+monitor = item.getAttribute('data-monitor');
+}
+if(item.src && monitor && bundleName) {
+if(!Roblox.BundleDetector.jsBundlesLoaded.hasOwnProperty(bundleName)) {
+errorsList.push(item);
+}
+}
+}
+if(errorsList.length > 0) {
+for(var j = 0; j < errorsList.length; j++) {
+var script = errorsList[j];
+if(!this.bundlesReported[script.src]) {
+this.logToEphemeralCounter(ephemeralCounterName);
+this.getCdnInfo(script.src, eventContext, 'js');
+if(script.dataset) {
+bundleName = script.dataset.bundlename;
+} else {
+bundleName = script.getAttribute('data-bundlename');
+}
+this.getCdnProviderAndReportMetrics(script.src, bundleName, loadStates.executionFailure, bundleContentTypes.javascript);
+}
+}
+}
+}
+};
+})();
+window.addEventListener("load", function(evt) {
+Roblox.BundleDetector.verifyBundles();
+});
+Roblox.BundleDetector.setTiming(window.performance.timing);
+</script>
+<link onerror=Roblox.BundleDetector&amp;&amp;Roblox.BundleDetector.reportBundleError(this) rel=stylesheet href=https://www.voidrev.us/css/leanbase.css>
+<link onerror=Roblox.BundleDetector&amp;&amp;Roblox.BundleDetector.reportBundleError(this) rel=stylesheet href=https://www.voidrev.us/css/game.css>
+<link onerror=Roblox.BundleDetector&amp;&amp;Roblox.BundleDetector.reportBundleError(this) rel=stylesheet data-bundlename=Chat href=https://www.voidrev.us/css/d4ea5fce70b8009044c02f73117827c92c07782ab871b64a0b22a078e74989e3.css>
+<script onerror=Roblox.BundleDetector&amp;&amp;Roblox.BundleDetector.reportBundleError(this) data-monitor=true data-bundlename=headerinit src=https://www.voidrev.us/js/175a4c92837369e0600f5343486a24f9.js></script>
+<script onerror=Roblox.BundleDetector&amp;&amp;Roblox.BundleDetector.reportBundleError(this) data-monitor=true data-bundlename=RealTime src=https://www.voidrev.us/js/2a27a86cbeb8a17802e9cca5ac801621a17b7c9f88f9c9bbb82e3d06203313b0.js></script>
+<script onerror=Roblox.BundleDetector&amp;&amp;Roblox.BundleDetector.reportBundleError(this) data-monitor=true data-bundlename=CrossTabCommunication src=https://www.voidrev.us/js/a3d58af86c198c153ba6efea6e93cf05a1343c124f70e763f9194684644a9c52.js></script>
+<script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+<meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<script>
+var Roblox = Roblox || {};
+Roblox.AdsHelper = Roblox.AdsHelper || {};
+Roblox.AdsLibrary = Roblox.AdsLibrary || {};
+Roblox.AdsHelper.toggleAdsSlot = function(slotId, GPTRandomSlotIdentifier) {
+var gutterAdsEnabled = false;
+if(gutterAdsEnabled) {
+googletag.display(GPTRandomSlotIdentifier);
+return;
+}
+if(typeof slotId !== 'undefined' && slotId && slotId.length > 0) {
+var slotElm = $("#" + slotId);
+if(slotElm.is(":visible")) {
+googletag.display(GPTRandomSlotIdentifier);
+} else {
+var adParam = Roblox.AdsLibrary.adsParameters[slotId];
+if(adParam) {
+adParam.template = slotElm.html();
+slotElm.empty();
+}
+}
+}
+}
+</script>
+<script>
+$(function() {
+Roblox.JSErrorTracker.initialize({
+'suppressConsoleError': true
+});
+});
+</script>
+<div id=Leaderboard-Abp class="abp leaderboard-abp">
+<iframe name=Roblox_GameDetail_Top_728x90 allowtransparency=true frameborder=0 height=110 scrolling=no data-src="" src=https://www.voidrev.us/user-sponsorship/?id=3 width=728 data-js-adtype=iframead data-ad-slot=Roblox_GameDetail_Top_728x90></iframe>
+</div>
+<div id=game-detail-page class="row page-content inline-social" data-post-game-loop-variation="" data-place-id=<?=$getid;?>>
+<div class="col-xs-12 section-content game-main-content follow-button-enabled">
+<div class=game-thumb-container>
+<div id=carousel-game-details class="carousel slide" data-ride=carousel data-is-video-autoplayed-on-ready=true data-is-mobile=false>
+<div class=carousel-inner role=listbox>
+<?php
+if($video != ""){ ?>
+<div class="item active">
+<span>
+<div class="flex-video widescreen"><iframe width="560" height="315" src="https://www.youtube.com/embed/<?=$video;?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+</span>
+</div>
+<?php }
+if($getthumb1 == 0 && $getthumb2 == 0 && $getthumb3 == 0 && $video == ""){ ?>
+<div class="item active">
+<span ><img class='carousel-thumb' width='640' height='360' src='<?=getPlaceThumbnail1($con,$getid);?>' /></span>
+</div>
+<?php }
+if($getthumb1 != 0){ ?>
+<div class="item <?php if($video == ""){echo"active";}?>">
+<span ><img class='carousel-thumb' width='640' height='360' src='<?=getPlaceThumbnail1($con,$getid);?>' /></span>
+</div>
+<?php }
+if($getthumb2 != 0){ ?>
+<div class="item ">
+<span ><img class='carousel-thumb' width='640' height='360' src='<?=getPlaceThumbnail2($con,$getid);?>' /></span>
+</div>
+<?php }
+if($getthumb3 != 0){ ?>
+<div class="item ">
+<span ><img class='carousel-thumb' width='640' height='360' src='<?=getPlaceThumbnail3($con,$getid);?>' /></span>
+</div>
+<? } ?>
+</div>
+<a class="left carousel-control" href=#carousel-game-details role=button data-slide=prev> <span class=icon-carousel-left aria-hidden=true></span> <span class=sr-only>Previous</span> </a>
+<a class="right carousel-control" href=#carousel-game-details role=button data-slide=next> <span class=icon-carousel-right aria-hidden=true></span> <span class=sr-only>Next</span> </a>
+</div>
+</div>
+<div class=game-calls-to-action>
+<?php if($gamecreatorid == $uid && !$banned > 0){ ?>
+<div id=game-context-menu>
+<a class=rbx-menu-item data-toggle=popover data-bind=game-context-menu data-original-title="" data-viewport=.game-calls-to-action> <span class=icon-more></span> </a>
+<div class=rbx-popover-content data-toggle=game-context-menu>
+<ul class=dropdown-menu role=menu>
+<li>
+<div class="VisitButton VisitButtonEdit" placeid=<?=$getid;?> data-universeid=<?=$getid;?> data-allowupload=true><a>Edit</a></div>
+<li id=rbx-developer-stats>
+<a href=https://www.voidrev.us/places/<?=$getid;?>/stats>
+<div>Developer Stats</div>
+</a>
+<li id=rbx-configure-game>
+<a href="https://www.voidrev.us/universes/configure?id=<?=$getid;?>">
+<div>Configure this Game</div>
+</a>
+<li id=configure-localization>
+<a href=https://www.voidrev.us/localization/games/<?=$getid;?>/configure>
+<div>Configure Localization</div>
+</a>
+<li>
+<a id=toggle-profile data-place-id=<?=$getid;?> data-in-showcase=True href=# class=rbx-context-menu-toggle-profile>
+<div>Remove from Profile</div>
+</a>
+<li>
+<a id=shutdown-all-button data-place-id=<?=$getid;?> href=# class=rbx-context-menu-shutdown-all>
+<div>Shut Down All Servers</div>
+</a>
+</ul>
+</div>
+</div>
+<?}?>
+<script>
+$(function() {
+if(typeof Roblox === "undefined") {
+Roblox = {};
+}
+if(typeof Roblox.Showcases === "undefined") {
+Roblox.Showcases = {};
+}
+Roblox.Showcases.InShowcase = $("#game-context-menu").find(".rbx-context-menu-toggle-profile").data("in-showcase") === "True";
+$("#game-context-menu ").on("click", ".rbx-context-menu-toggle-profile", function(evt) {
+evt.preventDefault();
+var el = $(this);
+var placeId = el.data("place-id");
+$("#game-context-menu").find(".rbx-menu-item").popover('hide');
+$.post("/game/toggle-profile", {
+placeId: placeId,
+addToProfile: !Roblox.Showcases.InShowcase
+}, function(json) {
+if(json.isValid) {
+Roblox.Showcases.InShowcase = json.data.inShowcase;
+$("#game-context-menu").find(".rbx-context-menu-toggle-profile div").text(Roblox.Showcases.InShowcase ? "Remove from Profile" : "Add to Profile");
+}
+});
+});
+function handleShutdownAllInstancesError() {
+Roblox.Dialog.open({
+titleText: "An Error Occured",
+bodyContent: "Could not shut down servers.",
+acceptText: "OK",
+allowHtmlContentInBody: true,
+dismissable: true
+});
+}
+function shutdownAllInstances(placeId) {
+$.ajax({
+type: "POST",
+url: "/Games/shutdown-all-instances",
+data: {
+placeId: placeId
+},
+error: handleShutdownAllInstancesError
+});
+}
+$("#game-context-menu ").on("click", ".rbx-context-menu-shutdown-all", function(evt) {
+evt.preventDefault();
+$("#game-context-menu").find(".rbx-menu-item").popover('hide');
+var placeId = $(this).data("place-id");
+Roblox.Dialog.open({
+titleText: "Shut Down All Servers",
+bodyContent: "Are you sure you want to shut down all servers for this place?",
+acceptText: "Yes",
+declineText: "No",
+allowHtmlContentInBody: true,
+onAccept: function() {
+shutdownAllInstances(placeId);
+}
+});
+});
+$("#game-context-menu").on("click", ".VisitButtonEditGLI", function(evt) {
+$("#game-context-menu").find(".rbx-menu-item").popover('hide');
+var el = $(this);
+var placeId = el.attr("placeid");
+var universeId = el.data("universeid");
+var allowUpload = el.data("allowupload") ? true : false;
+Roblox.GameLauncher.editGameInStudio(placeId, universeId, allowUpload);
+});
+});
+</script>
+<div class=game-title-container>
+<h2 class=game-name title="<?php echo NOXSSPlz($gamename); ?>"><?php echo NOXSSPlz($gamename); ?></h2>
+<div class=game-creator><span class=text-label>By</span> <a class=text-name href=https://www.voidrev.us/users/<?=$gamecreatorid;?>/profile><?php echo NOXSSPlz($gamecreator); ?></a></div>
+</div>
+<div class=game-buttons-container>
+<div class="border-top border-bottom game-play-buttons" data-autoplay=false>
+<div class=game-play-button-container>
+<?php
+if($active == 1 || $uID == $gamecreatorid){
+$userAgent = $_SERVER['HTTP_USER_AGENT'];
+$userAgentLower = strtolower($userAgent);
+if (strpos($userAgentLower, 'roblox android') !== false || strpos($userAgentLower, 'roblox ios') !== false) {
+?>
+<div class="VisitButton VisitButtonPlayGLI" style="min-width: 44%;">
+<a class="btn-primary-lg" onclick="window.location.href='games/start?placeid=<?=$getid;?>';">Play</a>
+</div>
+<?php
+if($active == 0){
+echo '<div class="rbx-visit-button-closed">Only you can play because this game is private. Make it public on the <a class="text-link" href=/develop/>Develop</a> page.</div>';
+}
+}else{ ?>
+<div id=MultiplayerVisitButton class="VisitButton VisitButtonPlayGLI" placeid=<?=$getid;?> data-action=play
+data-is-membership-level-ok=true data-user-id="
+<?=$uID;?>" data-universe-id=
+<?=$getid;?> data-originator-type="" data-originator-id=""><a class=btn-primary-lg>Play</a>
+</div>
+<?php
+}
+if($active == 0){
+echo '<div class="rbx-visit-button-closed">Only you can play because this game is private. Make it public on the <a class="text-link" href=/develop/>Develop</a> page.</div>';
+}
+}else{
+echo '<div class="rbx-visit-button-closed">Sorry, this place is currently closed to visitors.</div>';
+} ?>
+<script>
+Roblox = Roblox || {};
+Roblox.BCUpsellModal = function() {
+var resources = {
+title: "Builders Club Only",
+body: "This is a premium item only available to our Builders Club members.",
+accept: "Upgrade Now",
+decline: "Cancel"
+};
+var open = function() {
+var options = {
+titleText: resources.title,
+bodyContent: resources.body,
+footerText: "",
+acceptText: resources.accept,
+declineText: resources.decline,
+acceptColor: Roblox.GenericConfirmation.green,
+onAccept: function() {
+window.location.href = "https://www.voidrev.us/premium/membership?ctx=bc-only-game"
+},
+imageUrl: 'https://www.voidrev.us/img/43ac54175f3f3cd403536fedd9170c10.png'
+};
+Roblox.GenericConfirmation.open(options);
+};
+return {
+open: open,
+Resources: resources
+};
+}();
+</script>
+<script>
+var play_placeId = <?=$getid;?>;
+function fireEventAction(action) {
+RobloxEventManager.triggerEvent('rbx_evt_popup_action', {
+action: action
+});
+}
+$(function() {
+$('.VisitButtonPlay a').attr('href', 'intent://placeID=<?=$getid;?>#Intent;scheme=robloxmobile;package=com.roblox.client;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.roblox.client;end');
+$('#game-context-menu').on('click touchstart', '.VisitButtonEdit', function() {
+RobloxLaunch._GoogleAnalyticsCallback = function() {
+var isInsideRobloxIDE = 'website';
+if(Roblox && Roblox.Client && Roblox.Client.isIDE && Roblox.Client.isIDE()) {
+isInsideRobloxIDE = 'Studio';
+};
+GoogleAnalyticsEvents.FireEvent(['Plugin Location', 'Launch Attempt', isInsideRobloxIDE]);
+GoogleAnalyticsEvents.FireEvent(['Plugin', 'Launch Attempt', 'Edit']);
+EventTracker.fireEvent('GameLaunchAttempt_Unknown', 'GameLaunchAttempt_Unknown_Plugin');
+if(typeof Roblox.GamePlayEvents != 'undefined') {
+Roblox.GamePlayEvents.SendClientStartAttempt(null, play_placeId);
+}
+};
+play_placeId = (typeof $(this).attr('placeid') === 'undefined') ? play_placeId : $(this).attr('placeid');
+Roblox.Client.WaitForRoblox(function() {
+if(Roblox.VideoPreRollDFP) {
+Roblox.VideoPreRollDFP.showVideoPreRoll = false;
+}
+RobloxLaunch.StartGameWithPlaceId('<?=$getid;?>')
+});
+return false;
+});
+}());;
+</script>
+<script>
+$(function() {
+Roblox.PlaceItemPurchase = new Roblox.ItemPurchase(function(obj) {
+$(".PurchaseButton[data-item-id=" + obj.AssetID + "]").each(function(index, htmlElem) {
+$("#rbx-place-purchase-required").hide();
+$("#MultiplayerVisitButton").show();
+});
+});
+if("False".toLowerCase() == "true") {
+$(function() {
+$("#rbx-place-purchase-required").on("click", function(e) {
+Roblox.PlaceItemPurchase.openPurchaseVerificationView(this);
+return false;
+});
+});
+}
+});
+</script>
+</div>
+</div>
+<ul class=favorite-follow-vote-share>
+<li class=game-favorite-button-container>
+<div class=tooltip-container data-toggle=tooltip data-original-title="Add to Favorites">
+<div class=favorite-button>
+<a id=toggle-game-favorite data-toggle-url=/favorite/toggle data-assetid=<?=$getid;?> data-isguest=False data-signin-url="https://www.voidrev.us/newlogin?returnUrl=%2Fgames%2F<?=$getid;?>%2F%3Fnl%3Dtrue">
+<div id=game-favorite-icon class="icon-favorite favorited"></div>
+<div id=game-favorite-icon-label class=icon-label>Favorited</div>
+</a>
+</div>
+</div>
+<li class=game-follow-button-container>
+<div class=tooltip-container data-toggle=tooltip data-original-title="">
+<div class=follow-button>
+<a id=toggle-game-follow data-universe-id=<?=$getid;?> data-is-guest=false data-signin-url="https://www.voidrev.us/newlogin?returnUrl=%2Fgames%2F<?=$getid;?>%2F" data-user-id=<?=$uID;?> data-originator="" data-originator-id="">
+<div id=game-follow-icon class=icon-follow-game></div>
+<div id=game-follow-icon-label class=icon-label>Follow</div>
+</a>
+</div>
+</div>
+<li id=voting-container class=voting-panel><span class="game-voting-panel spinner spinner-default"></span>
+<li class=social-media-share>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-xs-12 rbx-tabs-horizontal" data-place-id=<?=$getid;?>>
+<ul id=horizontal-tabs class="nav nav-tabs" role=tablist>
+<li id=tab-about class="rbx-tab tab-about active"><a class=rbx-tab-heading href=#about> <span
+class=text-lead>About</span> </a>
+<li id=tab-store class="rbx-tab tab-store"><a class=rbx-tab-heading href=#store> <span
+class=text-lead>Store</span> </a>
+<li id=tab-game-instances class="rbx-tab tab-game-instances"><a class=rbx-tab-heading
+href=#game-instances> <span class=text-lead>Servers</span> </a>
+</ul>
+<div class="tab-content rbx-tab-content">
+<div class="tab-pane active" id=about>
+<div class="section game-about-container">
+<div class=container-header>
+<h3>Description</h3>
+</div>
+<div class="section-content remove-panel">
+<pre class="text game-description linkify"><?php echo NOXSSPlz($description);?></pre>
+<ul class="border-top border-bottom game-stats-container follow-button-enabled">
+<li class=game-stat>
+<p class="text-label text-overflow font-caption-header">Playing
+<p class="text-lead font-caption-body wait-for-i18n-format-render invisible"><?php echo number_format($playercount);?>
+<li class=game-stat>
+<p class="text-label text-overflow font-caption-header">Favorites
+<p class="text-lead font-caption-body wait-for-i18n-format-render invisible"><span
+class=game-favorite-count><?php echo number_format($favorites);?></span>
+<li class=game-stat>
+<p class="text-label text-overflow font-caption-header">Visits
+<p id=game-visit-count
+class="text-lead font-caption-body wait-for-i18n-format-render invisible"
+title=<?php echo number_format($visits);?>><?php echo number_format($visits);?>
+<li class=game-stat>
+<p class="text-label text-overflow font-caption-header">Created
+<p class="text-lead font-caption-body date-time-i18n"
+data-date-time-i18n-value=<?php echo date("m/d/Y", $game['created']); ?> data-date-time-i18n-format=short>
+<li class=game-stat>
+<p class="text-label text-overflow font-caption-header">Updated
+<p class="text-lead font-caption-body date-time-i18n"
+data-date-time-i18n-value=<?php echo date("m/d/Y", $game['updated']); ?> data-date-time-i18n-format=short>
+<li class=game-stat>
+<p class="text-label text-overflow font-caption-header">Max Players
+<p class="text-lead font-caption-body wait-for-i18n-format-render invisible"><?=$maxplayers;?>
+<li class=game-stat>
+<p class="text-label text-overflow font-caption-header">Genre
+<p class=text-lead><a
+class="text-name font-caption-body wait-for-i18n-format-render invisible"
+href="https://www.voidrev.us/games?GenreFilter=1">All Genres</a>
+<li class=game-stat>
+<p class="text-label text-overflow font-caption-header">Allowed Gear
+<p class="text-lead font-caption-body stat-gears"><span class=icon-nogear
+data-toggle=tooltip data-original-title="No Gear Allowed"></span>
+</ul>
+<div class=game-stat-footer><span class=game-report-abuse><a
+class="text-report abuse-report-modal"
+href="https://www.voidrev.us/abusereport/asset?id=<?=$getid;?>&amp;RedirectUrl=%2fgames%2f<?=$getid;?>%2f">Report
+Abuse</a></span></div>
+</div>
+</div>
+<div id=rbx-vip-servers class=stack data-placeid=<?=$getid;?> data-universeid=<?=$getid;?>
+data-place-name="<?php echo NOXSSPlz($gamename); ?>" data-creator-name="<?php echo NOXSSPlz($gamecreator);?>"
+data-renew-price="This VIP Server will start renewing every month at &lt;span class='icon-robux-16x16'>&lt;/span>&lt;span class='text-robux'>100&lt;/span> until you cancel."
+data-user-profile-absolute-url=https://www.voidrev.us/users/0/profile data-showshutdown
+data-slow-game-fps-threshold=15 data-private-server-name-max-length=50
+data-private-server-name-error-text="The name of a VIP Server cannot be blank and can be no more than {0} characters."
+data-configure-base-url="/private-server/configure?privateServerId={0}"
+data-game-instances-base-url="/private-server/instance-list?universeId=<?=$getid;?>"
+data-game-shutdown-url=/game-instances/shutdown data-is-user-authenticated=True
+data-instance-list-url=/private-server/instance-list-json
+data-renew-url=/private-server/renew data-is-game-joinable=True>
+<div class=container-header>
+<h3>VIP Servers</h3><span class=tooltip-container data-toggle=tooltip
+data-original-title="VIP servers let you play this game privately with friends, your clan, or people you invite!">
+<span class=icon-moreinfo></span> </span> <span
+class="btn-fixed-width btn-control-xs btn-more rbx-refresh refresh-link-icon">Refresh</span>
+</div>
+<ul class="stack-list create-server-banner">
+<li class="stack-row remove-panel">
+<div id=private-server-purchase-body-content class=hidden>
+<div class=private-server-purchase>
+<div class="modal-list-item private-server-main-text">Create a VIP Server for
+<span class=icon-robux-gray-16x16></span>100?</div>
+<div class=modal-list-item><span class="text-label private-server-game-name">
+Game Name </span> <span class=game-name> <?php echo NOXSSPlz($gamename); ?> </span></div>
+<div class="modal-list-item private-server-name-input"><span
+class=text-label>Server Name</span>
+<div class=form-group><input type=text
+class="form-control input-field private-server-name" maxlength=50></div>
+<div class="form-control-label private-server-name-error-message"></div>
+</div>
+</div>
+</div><span class="btn-secondary-md btn-more rbx-vip-server-create"
+data-is-private-server=true data-product-id=<?=$getid;?> data-item-id="<?=$getid;?>"
+data-item-name="<?php echo NOXSSPlz($gamename); ?>" data-expected-price=100 data-expected-currency=1
+data-seller-name=<?php echo NOXSSPlz($gamecreator);?> data-expected-seller-id=<?=$gamecreatorid;?>
+data-continueshopping-url="/games/<?=$getid;?>/"
+data-purchase-title-text="Create VIP Server" data-purchase-body-content=""
+data-purchase-url=/private-server/purchase data-universe-id=<?=$getid;?>
+data-modal-field-validation-required=true
+data-footer-text="Your balance after this transaction will be &lt;span class='icon-robux-gray-16x16'>&lt;/span>{0}. This is a subscription-based feature. It will auto-renew once a month until you cancel the subscription."
+name=CreatePrivateServer>Create VIP Server</span> <span
+class=create-server-banner-text> Play this game with friends and other people you
+invite.<br> See all your VIP servers in the <a class=text-link
+href=#!/game-instances>Servers</a> tab. </span>
+</ul>
+<div class="section tab-server-only"></div>
+</div>
+<div ng-modules="robloxApp, cursorPagination, badges">
+<div badges-list universe-id=<?=$getid;?>></div>
+</div>
+<script>var Roblox = Roblox || {}; Roblox.GameDetail = Roblox.GameDetail || {}; Roblox.GameDetail.UniverseId = <?=$getid;?>;</script>
+</div>
+<div class="tab-pane store" id=store>
+<div id=rbx-game-passes class="container-list game-dev-store game-passes">
+<div class=container-header>
+<h3>Passes for this game</h3>
+</div>
+</div>
+<li class="list-item rbx-passes-item-container rbx-gear-passes-item-add" id=spinner
+style=display:none><span class="spinner spinner-default"></span></li>
+<script>$(function () { Roblox.GamePassJSData = Roblox.GamePassJSData || {}; Roblox.GamePassJSData.PlaceID = <?=$getid;?>; Roblox.GamePassJSData.GamePassesPerPlaceLimit = 50; Roblox.GamePassJSData.LabelBuy = "Buy"; Roblox.GamePassJSData.LabelOwned = "Owned"; Roblox.GamePassJSData.DataAssetType = "Game Pass"; var purchaseConfirmationCallback = function (obj) { var originalContainer = $('.PurchaseButton[data-item-id=' + obj.AssetID + ']').parent('.store-card-caption'); originalContainer.find('.rbx-purchased').hide(); originalContainer.find('.rbx-item-buy').show(); }; Roblox.GamePassItemPurchase = new Roblox.ItemPurchase(purchaseConfirmationCallback); $("#store #rbx-game-passes, #all-purchasable-items #rbx-game-passes").on("click", ".PurchaseButton", function (e) { Roblox.PlaceProductPromotionItemPurchase.openPurchaseVerificationView($(this), 'game-pass'); }); $("#store #rbx-game-passes .btn-more, #all-purchasable-items #rbx-game-passes .btn-more").on("click", function (e) { $("#rbx-game-passes #rbx-passes-container").toggleClass("collapsed"); }); });</script>
+<input name=__RequestVerificationToken type=hidden
+<div id=rbx-game-gear class="container-list game-dev-store game-gear">
+<div class=container-header>
+<h3>Gear for this game</h3>
+</div>
+<ul id=rbx-gear-container class="hlist store-cards gear-passes-container rbx-gear-container">
+</ul>
+</div>
+<script>$(function () {
+Roblox = Roblox || {}; Roblox.PromotedProductJSData = Roblox.PromotedProductJSData || {}; Roblox.PlaceProductPromotion.Resources = { anErrorOccurred: "An error occurred, please try again.", ok: "OK", success: "Success!", error: "Error", sorryWeCouldnt: "Sorry, we couldn&#39;t remove the item from your game. Please try again.", notForSale: "This item is not for sale.", rent: "Rent" }; var purchaseConfirmationCallback = function (obj) { var originalContainer = $('.PurchaseButton[data-item-id=' + obj.AssetID + ']').parent('.store-card-caption'); originalContainer.find('.rbx-purchased').hide(); originalContainer.find('.rbx-item-buy').show(); }; Roblox.PlaceProductPromotionItemPurchase = new Roblox.ItemPurchase(purchaseConfirmationCallback); Roblox.PromotedProductJSData.PlaceID = <?=$getid;?>; $("#store, #all-purchasable-items").on("click", ".icon-alert", function (e) { var promoId = $(this).data('delete-promotion-id'); Roblox.PlaceProductPromotion.DeleteGear(promoId); }); $("#store #rbx-game-gear, #all-purchasable-items #rbx-game-gear").on("click", ".PurchaseButton", function (e) { Roblox.PlaceProductPromotionItemPurchase.openPurchaseVerificationView($(this), 'game-gear'); }); $("#store #rbx-game-gear .btn-more, #all-purchasable-items #rbx-game-gear .btn-more").on("click", function (e) { $("#rbx-game-gear .rbx-gear-container").toggleClass("collapsed"); }); $(".rbx-tab a[href='#store']").on('shown.bs.tab', function () { Roblox.PlaceProductPromotionLazy.init(); Roblox.GamePassLazyLoading.init(); $(".rbx-tab a[href='#store']").unbind('shown.bs.tab'); }); var checkForImmediateLoading = function () { var loadImmediatelyData = $("#all-purchasable-items").data('load-immediately'); if (parseInt(loadImmediatelyData) > 0) { Roblox.PlaceProductPromotionLazy.init(); Roblox.GamePassLazyLoading.init(); } }
+checkForImmediateLoading();
+});</script>
+<div id=DeleteProductPromotionModal class=PurchaseModal>
+<div id=simplemodal-close class=simplemodal-close><a></a></div>
+<div class=titleBar style=text-align:center></div>
+<div class=PurchaseModalBody>
+<div class=PurchaseModalMessage>
+<div class=PurchaseModalMessageImage>
+<div class=thumbs-up-green></div>
+</div>
+<div class=PurchaseModalMessageText></div>
+</div>
+<div class=PurchaseModalButtonContainer>
+<div class="ImageButton btn-blue-ok-sharp simplemodal-close"></div>
+</div>
+<div class=PurchaseModalFooter></div>
+</div>
+</div>
+<div class="tab-pane game-instances" id=game-instances>
+<div id=rbx-vip-servers class=stack data-placeid=<?=$getid;?> data-universeid=<?=$getid;?>
+data-place-name="<?php echo NOXSSPlz($gamename); ?>" data-creator-name="<?php echo NOXSSPlz($gamecreator);?>""
+data-renew-price="This VIP Server will start renewing every month at &lt;span class='icon-robux-16x16'>&lt;/span>&lt;span class='text-robux'>100&lt;/span> until you cancel."
+data-user-profile-absolute-url=https://www.voidrev.us/users/0/profile data-showshutdown
+data-slow-game-fps-threshold=15 data-private-server-name-max-length=50
+data-private-server-name-error-text="The name of a VIP Server cannot be blank and can be no more than {0} characters."
+data-configure-base-url="/private-server/configure?privateServerId={0}"
+data-game-instances-base-url="/private-server/instance-list?universeId=<?=$getid;?>"
+data-game-shutdown-url=/game-instances/shutdown data-is-user-authenticated=True
+data-instance-list-url=/private-server/instance-list-json
+data-renew-url=/private-server/renew data-is-game-joinable=True>
+<div class=container-header>
+<h3>VIP Servers</h3><span class=tooltip-container data-toggle=tooltip
+data-original-title="VIP servers let you play this game privately with friends, your clan, or people you invite!">
+<span class=icon-moreinfo></span> </span> <span
+class="btn-fixed-width btn-control-xs btn-more rbx-refresh refresh-link-icon">Refresh</span>
+</div>
+<ul class="stack-list create-server-banner">
+<li class="stack-row remove-panel">
+<div id=private-server-purchase-body-content class=hidden>
+<div class=private-server-purchase>
+<div class="modal-list-item private-server-main-text">Create a VIP Server for
+<span class=icon-robux-gray-16x16></span>100?</div>
+<div class=modal-list-item><span class="text-label private-server-game-name">
+Game Name </span> <span class=game-name> <?php echo NOXSSPlz($gamename); ?> </span></div>
+<div class="modal-list-item private-server-name-input"><span
+class=text-label>Server Name</span>
+<div class=form-group><input type=text
+class="form-control input-field private-server-name" maxlength=50></div>
+<div class="form-control-label private-server-name-error-message"></div>
+</div>
+</div>
+</div><span class="btn-secondary-md btn-more rbx-vip-server-create"
+data-is-private-server=true data-product-id=<?=$getid;?> data-item-id="<?=$getid;?>"
+data-item-name="<?php echo NOXSSPlz($gamename); ?>" data-expected-price="100" data-expected-currency="1"
+data-seller-name=<?php echo NOXSSPlz($gamecreator);?> data-expected-seller-id="<?=$gamecreatorid;?>"
+data-continueshopping-url="/games/<?=$getid;?>/"
+data-purchase-title-text="Create VIP Server" data-purchase-body-content=""
+data-purchase-url=/private-server/purchase data-universe-id=<?=$getid;?>
+data-modal-field-validation-required=true
+data-footer-text="Your balance after this transaction will be &lt;span class='icon-robux-gray-16x16'>&lt;/span>{0}. This is a subscription-based feature. It will auto-renew once a month until you cancel the subscription."
+name=CreatePrivateServer>Create VIP Server</span> <span
+class=create-server-banner-text>Play this game with friends and other people you
+invite.</span>
+</ul>
+<div class="section tab-server-only">
+<ul class="rbx-vip-server-item-container stack-list"></ul>
+<div class=rbx-vip-servers-footer><button type=button
+class="btn-control-sm btn-full-width rbx-vip-servers-load-more hidden">Load
+More</button></div>
+<div class=rbx-vip-server-template>
+<li class="stack-row rbx-vip-server-item">
+<div class=stack-header><span class=font-bold>My VIP Server</span>
+<div class="link-menu rbx-vip-server-menu"></div>
+</div>
+<div class="section-left rbx-vip-server-details">
+<div class=rbx-vip-owner></div>
+<div class="text-info rbx-game-status rbx-vip-server-status"></div>
+<div class=rbx-vip-server-alert><span class=icon-remove></span>Slow Game</div>
+<div class="rbx-vip-server-subscription-alert text-alert"><span
+class=icon-remove></span><span
+class=rbx-vip-server-subscription-alert-text>Payment Cancelled</span></div>
+<div class=rbx-vip-server-insufficient-funds><span class=icon-remove></span>This
+Server has been deactivated. We were not able to process the recurring payment
+due to insufficient funds in your account.</div>
+<div class=rbx-vip-server-inactive><span class=icon-remove></span>Inactive.</div>
+<a class="btn-full-width btn-control-xs rbx-vip-server-renew" href=#>Renew</a> <a
+class="btn-full-width btn-control-xs rbx-vip-server-join" href=#
+data-placeid>Join</a>
+</div>
+<div class="section-right rbx-vip-server-players"></div>
+</li>
+</div>
+</div>
+</div>
+<div id=rbx-friends-running-games class=stack data-placeid=<?=$getid;?> data-showshutdown>
+<div class=container-header>
+<h3>Servers My Friends Are In</h3>
+</div>
+<ul id=rbx-friends-game-server-item-container
+class="section rbx-friends-game-server-item-container stack-list"></ul>
+<div class=rbx-friends-running-games-footer></div>
+<div class=rbx-friends-game-server-template>
+<li class="stack-row rbx-friends-game-server-item">
+<div class=section-header>
+<div class="link-menu rbx-friends-game-server-menu"></div>
+</div>
+<div class="section-left rbx-friends-game-server-details">
+<div class="text-info rbx-game-status rbx-friends-game-server-status"></div>
+<div class=rbx-friends-game-server-alert><span class=icon-remove></span>Slow Game
+</div><a class="btn-full-width btn-control-xs rbx-friends-game-server-join" href=#
+data-placeid>Join</a>
+</div>
+<div class="section-right rbx-friends-game-server-players"></div>
+</li>
+</div>
+</div>
+<div id=rbx-running-games class=stack data-placeid=<?=$getid;?> data-maximumrows=10
+data-showshutdown>
+<div class=container-header>
+<h3>Other Servers</h3>
+</div>
+<ul id=rbx-game-server-item-container
+class="section rbx-game-server-item-container stack-list"></ul>
+<div class=rbx-running-games-footer><button type=button
+class="btn-control-sm btn-full-width rbx-running-games-load-more hidden">Load
+More</button></div>
+<div class=rbx-game-server-template>
+<li class="stack-row rbx-game-server-item">
+<div class=section-header>
+<div class="link-menu rbx-game-server-menu"></div>
+</div>
+<div class="section-left rbx-game-server-details">
+<div class="text-info rbx-game-status rbx-game-server-status"></div>
+<div class=rbx-game-server-alert><span class=icon-remove></span>Slow Game</div><a
+class="btn-full-width btn-control-xs rbx-game-server-join" href=#
+data-placeid>Join</a>
+</div>
+<div class="section-right rbx-game-server-players"></div>
+</li>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="GenericModal modalPopup unifiedModal smallModal" style=display:none>
+<div class=Title></div>
+<div class=GenericModalBody>
+<div>
+<div class=ImageContainer><img class=GenericModalImage alt="generic image"></div>
+<div class=Message></div>
+</div>
+<div class=clear></div>
+<div id=GenericModalButtonContainer class=GenericModalButtonContainer><a class="ImageButton btn-neutral btn-large roblox-ok">OK</a></div>
+</div>
+</div>
+<div id=ItemPurchaseAjaxData data-has-currency-service-error=False data-currency-service-error-message="" data-authenticateduser-isnull=False data-user-balance-robux=<?=$Robux;?> data-user-bc=0 data-continueshopping-url="https://www.voidrev.us/games/<?=$getid;?>/" data-imageurl=https://www.voidrev.us/<?php echo getPlaceIcon($con,$getid);?> data-alerturl=https://www.voidrev.us/img/75af9e2cb6a75450bee5245f5ee11c86.svg data-insufficentfundsurl=https://www.voidrev.us/img/b80339ddf867ccfe6ab23a2c263d8000.png data-is-economy-api-enabled=False data-is-bc-only-requirement-enabled=False></div>
+<script>
+var Roblox = Roblox || {};
+Roblox.GamePassJSData = Roblox.GamePassJSData || {};
+Roblox.GamePassJSData.LabelGameDoesNotSell = "This game does not sell any virtual items or power-ups.";
+$(function() {
+if(Roblox.Voting) {
+Roblox.Voting.LoadVotingService($("#voting-container"), <?=$getid;?>);
+}
+});
+Roblox.GamePassJSData.TotalGearItems = 0;
+</script>
+</div>
+<div id=Skyscraper-Abp-Right class="abp abp-container right-abp">
+<iframe name=Roblox_GameDetail_Right_160x600 allowtransparency=true frameborder=0 height=612 scrolling=no data-src="" src=https://www.voidrev.us/user-sponsorship/?id=1 width=160 data-js-adtype=iframead data-ad-slot=Roblox_GameDetail_Right_160x600></iframe>
+</div>
+</div>
+</div>
+<footer class=container-footer>
+<div class=footer>
+<ul class="row footer-links">
+<li class=footer-link><a href="https://www.voidrev.us/info/about-us?locale=en_us" class="text-footer-nav roblox-interstitial" target=_blank> About Us </a>
+<li class=footer-link><a href="https://www.voidrev.us/info/jobs?locale=en_us" class="text-footer-nav roblox-interstitial" target=_blank> Jobs </a>
+<li class=footer-link><a href="https://www.voidrev.us/info/blog?locale=en_us" class=text-footer-nav target=_blank> Blog </a>
+<li class=footer-link><a href="https://www.voidrev.us/info/parents?locale=en_us" class="text-footer-nav roblox-interstitial" target=_blank> Parents </a>
+<li class=footer-link><a href="https://www.voidrev.us/info/help?locale=en_us" class="text-footer-nav roblox-interstitial" target=_blank> Help </a>
+<li class=footer-link><a href="https://www.voidrev.us/info/terms?locale=en_us" class=text-footer-nav target=_blank> Terms </a>
+<li class=footer-link><a href="https://www.voidrev.us/info/privacy?locale=en_us" class="text-footer-nav privacy" target=_blank> Privacy </a> </ul>
+<div class="row copyright-wrapper">
+<div class="col-sm-6 col-md-3">
+<div class="rbx-select-group icon-dropdown">
+<select class="rbx-select language-select" id=language-switcher>
+<option value=de_de data-is-supported=true> Deutsch
+<option value=en_us data-is-supported=true selected> English
+<option value=es_es data-is-supported=true> Espa&#241;ol
+<option value=fr_fr data-is-supported=true> Fran&#231;ais
+<option value=pt_br data-is-supported=true> Portugu&#234;s (Brasil)
+<option value=ko_kr data-is-supported=true> 한국어
+<option value=zh_cn data-is-supported=true> 中文(简体)
+<option value=zh_tw data-is-supported=true> 中文(繁體)
+<option value=ja_jp data-is-supported=true> 日本語
+<option value=id_id data-is-supported=false> Bahasa Indonesia*
+<option value=ms_my data-is-supported=false> bahasa Melayu*
+<option value=nb_no data-is-supported=false> bokm&#229;l*
+<option value=cs_cz data-is-supported=false> čeština*
+<option value=da_dk data-is-supported=false> dansk*
+<option value=et_ee data-is-supported=false> eesti*
+<option value=fil_ph data-is-supported=false> Filipino*
+<option value=hr_hr data-is-supported=false> hrvatski*
+<option value=it_it data-is-supported=false> Italiano*
+<option value=lv_lv data-is-supported=false> latviešu*
+<option value=lt_lt data-is-supported=false> lietuvių*
+<option value=hu_hu data-is-supported=false> magyar*
+<option value=nl_nl data-is-supported=false> Nederlands*
+<option value=pl_pl data-is-supported=false> polski*
+<option value=ro_ro data-is-supported=false> rom&#226;nă*
+<option value=sq_al data-is-supported=false> shqipe*
+<option value=sk_sk data-is-supported=false> slovenčina*
+<option value=sl_sl data-is-supported=false> slovenski*
+<option value=fi_fi data-is-supported=false> suomi*
+<option value=sv_se data-is-supported=false> svenska*
+<option value=vi_vn data-is-supported=false> Tiếng Việt Nam*
+<option value=tr_tr data-is-supported=false> T&#252;rk&#231;e*
+<option value=el_gr data-is-supported=false> ελληνικά*
+<option value=bs_ba data-is-supported=false> босански*
+<option value=bg_bg data-is-supported=false> български*
+<option value=kk_kz data-is-supported=false> қазақ тілі*
+<option value=ru_ru data-is-supported=false> Русский*
+<option value=sr_rs data-is-supported=false> српски*
+<option value=uk_ua data-is-supported=false> україньска*
+<option value=ka_ge data-is-supported=false> ქართული*
+<option value=hi_in data-is-supported=false> हिन्दी*
+<option value=bn_bd data-is-supported=false> বাংলা*
+<option value=si_lk data-is-supported=false> සිංහල*
+<option value=th_th data-is-supported=false> ภาษาไทย*
+<option value=my_mm data-is-supported=false> ဗမာစာ*
+<option value=km_kh data-is-supported=false> ភាសាខ្មែរ* </select> <span class="icon-arrow icon-down-16x16"></span> </div>
+<div class=input-group-btn>
+<button type=button class=input-dropdown-btn data-toggle=dropdown> <span class=icon-globe></span> <span class=rbx-selection-label data-bind=label> English </span> <span class=icon-down-16x16></span> </button>
+<ul data-toggle=dropdown-menu class=dropdown-menu role=menu>
+<li><a href=# class=locale-option data-locale=de_de data-is-supported=true> Deutsch </a>
+<li><a href=# class=locale-option data-locale=en_us data-is-supported=true> English </a>
+<li><a href=# class=locale-option data-locale=es_es data-is-supported=true> Espa&#241;ol </a>
+<li><a href=# class=locale-option data-locale=fr_fr data-is-supported=true> Fran&#231;ais </a>
+<li><a href=# class=locale-option data-locale=pt_br data-is-supported=true> Portugu&#234;s (Brasil) </a>
+<li><a href=# class=locale-option data-locale=ko_kr data-is-supported=true> 한국어 </a>
+<li><a href=# class=locale-option data-locale=zh_cn data-is-supported=true> 中文(简体) </a>
+<li><a href=# class=locale-option data-locale=zh_tw data-is-supported=true> 中文(繁體) </a>
+<li><a href=# class=locale-option data-locale=ja_jp data-is-supported=true> 日本語 </a>
+<li><a href=# class=locale-option data-locale=id_id data-is-supported=false> Bahasa Indonesia* </a>
+<li><a href=# class=locale-option data-locale=ms_my data-is-supported=false> bahasa Melayu* </a>
+<li><a href=# class=locale-option data-locale=nb_no data-is-supported=false> bokm&#229;l* </a>
+<li><a href=# class=locale-option data-locale=cs_cz data-is-supported=false> čeština* </a>
+<li><a href=# class=locale-option data-locale=da_dk data-is-supported=false> dansk* </a>
+<li><a href=# class=locale-option data-locale=et_ee data-is-supported=false> eesti* </a>
+<li><a href=# class=locale-option data-locale=fil_ph data-is-supported=false> Filipino* </a>
+<li><a href=# class=locale-option data-locale=hr_hr data-is-supported=false> hrvatski* </a>
+<li><a href=# class=locale-option data-locale=it_it data-is-supported=false> Italiano* </a>
+<li><a href=# class=locale-option data-locale=lv_lv data-is-supported=false> latviešu* </a>
+<li><a href=# class=locale-option data-locale=lt_lt data-is-supported=false> lietuvių* </a>
+<li><a href=# class=locale-option data-locale=hu_hu data-is-supported=false> magyar* </a>
+<li><a href=# class=locale-option data-locale=nl_nl data-is-supported=false> Nederlands* </a>
+<li><a href=# class=locale-option data-locale=pl_pl data-is-supported=false> polski* </a>
+<li><a href=# class=locale-option data-locale=ro_ro data-is-supported=false> rom&#226;nă* </a>
+<li><a href=# class=locale-option data-locale=sq_al data-is-supported=false> shqipe* </a>
+<li><a href=# class=locale-option data-locale=sk_sk data-is-supported=false> slovenčina* </a>
+<li><a href=# class=locale-option data-locale=sl_sl data-is-supported=false> slovenski* </a>
+<li><a href=# class=locale-option data-locale=fi_fi data-is-supported=false> suomi* </a>
+<li><a href=# class=locale-option data-locale=sv_se data-is-supported=false> svenska* </a>
+<li><a href=# class=locale-option data-locale=vi_vn data-is-supported=false> Tiếng Việt Nam* </a>
+<li><a href=# class=locale-option data-locale=tr_tr data-is-supported=false> T&#252;rk&#231;e* </a>
+<li><a href=# class=locale-option data-locale=el_gr data-is-supported=false> ελληνικά* </a>
+<li><a href=# class=locale-option data-locale=bs_ba data-is-supported=false> босански* </a>
+<li><a href=# class=locale-option data-locale=bg_bg data-is-supported=false> български* </a>
+<li><a href=# class=locale-option data-locale=kk_kz data-is-supported=false> қазақ тілі* </a>
+<li><a href=# class=locale-option data-locale=ru_ru data-is-supported=false> Русский* </a>
+<li><a href=# class=locale-option data-locale=sr_rs data-is-supported=false> српски* </a>
+<li><a href=# class=locale-option data-locale=uk_ua data-is-supported=false> україньска* </a>
+<li><a href=# class=locale-option data-locale=ka_ge data-is-supported=false> ქართული* </a>
+<li><a href=# class=locale-option data-locale=hi_in data-is-supported=false> हिन्दी* </a>
+<li><a href=# class=locale-option data-locale=bn_bd data-is-supported=false> বাংলা* </a>
+<li><a href=# class=locale-option data-locale=si_lk data-is-supported=false> සිංහල* </a>
+<li><a href=# class=locale-option data-locale=th_th data-is-supported=false> ภาษาไทย* </a>
+<li><a href=# class=locale-option data-locale=my_mm data-is-supported=false> ဗမာစာ* </a>
+<li><a href=# class=locale-option data-locale=km_kh data-is-supported=false> ភាសាខ្មែរ* </a> </ul>
+</div>
+</div>
+<div class="col-sm-6 col-md-9">
+<p class="text-footer footer-note">&#169;2018 Roblox Corporation. Roblox, the Roblox logo and Powering Imagination are among our registered and unregistered trademarks in the U.S. and other countries. </div>
+</div>
+</div>
+</footer>
+</div>
+<div id=chat-container class="chat chat-container" chat-base></div>
+<script>
+function urchinTracker() {}
+</script>
+<script>
+if(typeof Roblox === "undefined") {
+Roblox = {};
+}
+if(typeof Roblox.PlaceLauncher === "undefined") {
+Roblox.PlaceLauncher = {};
+}
+Roblox.PlaceLauncher.Resources = {
+RefactorEnabled: "True",
+IsProtocolHandlerBaseUrlParamEnabled: "False",
+ProtocolHandlerAreYouInstalled: {
+play: {
+content: "<img src='https://www.voidrev.us/img/6304dfebadecbb3b338a79a6a528936c.svg' width='90' height='90' alt='R'/><p>You&#39;re moments away from getting into the game!</p>",
+buttonText: "Download and Install Roblox",
+footerContent: "<a href='https://www.voidrev.us/game/help'class= 'text-name small' target='_blank' >Click here for help</a> "
+},
+studio: {
+content: "<img src='https://www.voidrev.us/img/3da410727fa2670dcb4f31316643138a.svg' width='95' height='95' alt='R' /><p>Get started creating your own games!</p>",
+buttonText: "Download Studio"
+}
+},
+ProtocolHandlerStartingDialog: {
+play: {
+content: "<img src='https://www.voidrev.us/img/6304dfebadecbb3b338a79a6a528936c.svg' width='90' height='90' alt='R'/><p>Roblox is now loading. Get ready to play!</p>"
+},
+studio: {
+content: "<img src='https://www.voidrev.us/img/3da410727fa2670dcb4f31316643138a.svg' width='95' height='95' alt='R' /><p>Checking for Roblox Studio...</p>"
+},
+loader: "<span class='spinner spinner-default'></span>"
+}
+};
+</script>
+<div id=PlaceLauncherStatusPanel style=display:none;width:300px data-new-plugin-events-enabled=True data-event-stream-for-plugin-enabled=True data-event-stream-for-protocol-enabled=True data-is-game-launch-interface-enabled=True data-is-protocol-handler-launch-enabled=True data-is-user-logged-in=True data-os-name=Windows <?php if($version == 2016){
+?>
+data-protocol-name-for-client="limb16-player-voidrev"
+data-protocol-name-for-studio="limb16-studio-voidrev"
+<?php
+}elseif($version == 2018){
+?>
+data-protocol-name-for-client="limb18-player-voidrev"
+data-protocol-name-for-studio="limb18-studio-voidrev"
+<?
+}elseif($version == 2020){
+?>
+data-protocol-name-for-client="limb20-player-voidrev"
+data-protocol-name-for-studio="limb20-studio-voidrev"
+<?
+}
+?> data-protocol-roblox-locale=<?php echo $locale;?> data-protocol-game-locale=<?php echo $locale;?> data-protocol-url-includes-launchtime=true data-protocol-detection-enabled=true data-protocol-separate-script-parameters-enabled=true data-protocol-avatar-parameter-enabled=true data-protocol-sending-locales-enabled=true data-protocol-enable-api-site-authentication-tickets=false data-protocol-enable-authentication-tickets=true>
+<div class="modalPopup blueAndWhite PlaceLauncherModal" style=min-height:160px>
+<div id=Spinner class=Spinner style="padding:20px 0"><img data-delaysrc=https://www.voidrev.us/img/e998fb4c03e8c2e30792f2f3436e9416.gif height=32 width=32 alt=Progress></div>
+<div id=status style="min-height:40px;text-align:center;margin:5px 20px">
+<div id=Starting class="PlaceLauncherStatus MadStatusStarting" style=display:block>Starting Roblox...</div>
+<div id=Waiting class="PlaceLauncherStatus MadStatusField">Connecting to Players...</div>
+<div id=StatusBackBuffer class="PlaceLauncherStatus PlaceLauncherStatusBackBuffer MadStatusBackBuffer"></div>
+</div>
+<div style=text-align:center;margin-top:1em>
+<input type=button class="Button CancelPlaceLauncherButton translate" value=Cancel>
+</div>
+</div>
+</div>
+<div id=ProtocolHandlerClickAlwaysAllowed class=ph-clickalwaysallowed style=display:none>
+<p class=larger-font-size><span class=icon-moreinfo></span> Check <strong>Always open links for URL: Roblox Protocol</strong> and click <strong>Open URL: Roblox Protocol</strong> in the dialog box above to join games faster in the future! </div>
+<div id=videoPrerollPanel style=display:none>
+<div id=videoPrerollTitleDiv>Gameplay sponsored by:</div>
+<div id=content>
+<video id=contentElement style=width:0;height:0>
+</div>
+<div id=videoPrerollMainDiv></div>
+<div id=videoPrerollCompanionAd></div>
+<div id=videoPrerollLoadingDiv> Loading <span id=videoPrerollLoadingPercent>0%</span> - <span id=videoPrerollMadStatus class=MadStatusField>Starting game...</span><span id=videoPrerollMadStatusBackBuffer class=MadStatusBackBuffer></span>
+<div id=videoPrerollLoadingBar>
+<div id=videoPrerollLoadingBarCompleted></div>
+</div>
+</div>
+<div id=videoPrerollJoinBC><span>Get more with Builders Club!</span> <a href="https://www.voidrev.us/premium/membership?ctx=preroll" target=_blank class="btn-medium btn-primary" id=videoPrerollJoinBCButton>Join Builders Club</a></div>
+</div>
+<script>
+$(function() {
+var videoPreRollDFP = Roblox.VideoPreRollDFP;
+if(videoPreRollDFP) {
+var customTargeting = Roblox.VideoPreRollDFP.customTargeting;
+videoPreRollDFP.showVideoPreRoll = false;
+videoPreRollDFP.loadingBarMaxTime = 33000;
+videoPreRollDFP.videoLoadingTimeout = 11000;
+videoPreRollDFP.videoPlayingTimeout = 41000;
+videoPreRollDFP.videoLogNote = "";
+videoPreRollDFP.logsEnabled = true;
+videoPreRollDFP.adUnit = "/1015347/VideoPreroll";
+videoPreRollDFP.adTime = 15;
+videoPreRollDFP.includedPlaceIds = "1";
+videoPreRollDFP.isSwfPreloaderEnabled = false;
+videoPreRollDFP.isPrerollShownEveryXMinutesEnabled = true;
+videoPreRollDFP.isAgeTargetingEnabled = true;
+videoPreRollDFP.isAgeOrSegmentTargetingEnabled = true;
+videoPreRollDFP.isCompanionAdRenderedByGoogleTag = true;
+customTargeting.userAge = "17";
+customTargeting.userAgeOrSegment = "17";
+customTargeting.userGender = "Male";
+customTargeting.gameGenres = "";
+customTargeting.environment = "Production";
+customTargeting.adTime = "15";
+customTargeting.PLVU = false;
+$(videoPreRollDFP.checkEligibility);
+}
+});
+</script>
+<script>
+function checkRobloxInstall() {
+return true;
+}
+</script>
+<div id=InstallationInstructions style=display:none>
+<div class=ph-installinstructions>
+<div class=ph-modal-header> <span class="icon-close simplemodal-close"></span>
+<h3 class=title>Thanks for playing Roblox</h3> </div>
+<div class=modal-content-container>
+<div class=ph-installinstructions-body>
+<ul class=modal-col-4>
+<li class=step1-of-4>
+<h2>1</h2>
+<p class=larger-font-size>Click <strong>RobloxPlayer.exe</strong> to run the Roblox installer, which just downloaded via your web browser.</p> <img data-delaysrc=https://www.voidrev.us/img/28eaa93b899b93461399aebf21c5346f.png>
+<li class=step2-of-4>
+<h2>2</h2>
+<p class=larger-font-size>Click <strong>Run</strong> when prompted by your computer to begin the installation process.</p> <img data-delaysrc=https://www.voidrev.us/img/51328932dedb5d8d61107272cc1a27db.png>
+<li class=step3-of-4>
+<h2>3</h2>
+<p class=larger-font-size>Click <strong>Ok</strong> once you've successfully installed Roblox.</p> <img data-delaysrc=https://www.voidrev.us/img/3797745629baca2d1b9496b76bc9e6dc.png>
+<li class=step4-of-4>
+<h2>4</h2>
+<p class=larger-font-size>After installation, click <strong>Play</strong> below to join the action!
+<div class="VisitButton VisitButtonContinueGLI"><a class="btn btn-primary-lg disabled btn-full-width">Play</a></div>
+</ul>
+</div>
+</div>
+<div class=xsmall> The Roblox installer should download shortly. If it doesn’t, start the <a id=GameLaunchManualInstallLink href=# class=text-link>download now.</a>
+<script>
+if(Roblox.ProtocolHandlerClientInterface && typeof Roblox.ProtocolHandlerClientInterface.attachManualDownloadToLink === 'function') {
+Roblox.ProtocolHandlerClientInterface.attachManualDownloadToLink();
+}
+</script>
+</div>
+</div>
+</div>
+<div class=InstallInstructionsImage data-modalwidth=970 style=display:none></div>
+<div id=pluginObjDiv style=height:1px;width:1px;visibility:hidden;position:absolute;top:0></div>
+<iframe id=downloadInstallerIFrame name=downloadInstallerIFrame style=visibility:hidden;height:0;width:1px;position:absolute></iframe>
+<script onerror=Roblox.BundleDetector&amp;&amp;Roblox.BundleDetector.reportBundleError(this) data-monitor=true data-bundlename=clientinstaller src=https://www.voidrev.us/js/3f2a863e0026fe90136944e1837e13df.js></script>
+<script>
+Roblox.Client._skip = '/install/unsupported.aspx';
+Roblox.Client._CLSID = '';
+Roblox.Client._installHost = '';
+Roblox.Client.ImplementsProxy = false;
+Roblox.Client._silentModeEnabled = false;
+Roblox.Client._bringAppToFrontEnabled = false;
+Roblox.Client._currentPluginVersion = '';
+Roblox.Client._eventStreamLoggingEnabled = false;
+Roblox.Client._installSuccess = function() {
+if(GoogleAnalyticsEvents) {
+GoogleAnalyticsEvents.ViewVirtual('InstallSuccess');
+GoogleAnalyticsEvents.FireEvent(['Plugin', 'Install Success']);
+if(Roblox.Client._eventStreamLoggingEnabled && typeof Roblox.GamePlayEvents != "undefined") {
+Roblox.GamePlayEvents.SendInstallSuccess(Roblox.Client._launchMode, play_placeId);
+}
+}
+}
+if((window.chrome || window.safari) && window.location.hash == '#chromeInstall') {
+window.location.hash = '';
+var continuation = '(' + $.cookie('chromeInstall') + ')';
+play_placeId = $.cookie('chromeInstallPlaceId');
+Roblox.GamePlayEvents.lastContext = $.cookie('chromeInstallLaunchMode');
+$.cookie('chromeInstallPlaceId', null);
+$.cookie('chromeInstallLaunchMode', null);
+$.cookie('chromeInstall', null);
+RobloxLaunch._GoogleAnalyticsCallback = function() {
+var isInsideRobloxIDE = 'website';
+if(Roblox && Roblox.Client && Roblox.Client.isIDE && Roblox.Client.isIDE()) {
+isInsideRobloxIDE = 'Studio';
+};
+GoogleAnalyticsEvents.FireEvent(['Plugin Location', 'Launch Attempt', isInsideRobloxIDE]);
+GoogleAnalyticsEvents.FireEvent(['Plugin', 'Launch Attempt', 'Play']);
+EventTracker.fireEvent('GameLaunchAttempt_Unknown', 'GameLaunchAttempt_Unknown_Plugin');
+if(typeof Roblox.GamePlayEvents != 'undefined') {
+Roblox.GamePlayEvents.SendClientStartAttempt(null, play_placeId);
+}
+};
+Roblox.Client.ResumeTimer(eval(continuation));
+}
+</script>
+<div class="ConfirmationModal modalPopup unifiedModal smallModal" data-modal-handle=confirmation style=display:none>
+<a class="genericmodal-close ImageButton closeBtnCircle_20h"></a>
+<div class=Title></div>
+<div class=GenericModalBody>
+<div class=TopBody>
+<div class="ImageContainer roblox-item-image" data-image-size=small data-no-overlays data-no-click><img class=GenericModalImage alt="generic image"></div>
+<div class=Message></div>
+</div>
+<div class="ConfirmationModalButtonContainer GenericModalButtonContainer"><a href="" id=roblox-confirm-btn><span></span></a> <a href="" id=roblox-decline-btn><span></span></a></div>
+<div class=ConfirmationModalFooter></div>
+</div>
+<script>
+Roblox = Roblox || {};
+Roblox.Resources = Roblox.Resources || {};
+Roblox.Resources.GenericConfirmation = {
+yes: "Yes",
+No: "No",
+Confirm: "Confirm",
+Cancel: "Cancel"
+};
+</script>
+</div>
+<div id=modal-confirmation class=modal-confirmation data-modal-type=confirmation>
+<div id=modal-dialog class=modal-dialog>
+<div class=modal-content>
+<div class=modal-header>
+<button type=button class=close data-dismiss=modal> <span aria-hidden=true><span class=icon-close></span></span><span class=sr-only>Close</span> </button>
+<h5 class=modal-title></h5> </div>
+<div class=modal-body>
+<div class=modal-top-body>
+<div class=modal-message></div>
+<div class="modal-image-container roblox-item-image" data-image-size=medium data-no-overlays data-no-click><img class=modal-thumb alt="generic image"></div>
+<div class="modal-checkbox checkbox">
+<input id=modal-checkbox-input type=checkbox>
+<label for=modal-checkbox-input></label>
+</div>
+</div>
+<div class=modal-btns><a href="" id=confirm-btn><span></span></a> <a href="" id=decline-btn><span></span></a></div>
+<div class="loading modal-processing"><img class=loading-default src=https://www.voidrev.us/img/4bed93c91f909002b1f17f05c0ce13d1.gif alt=Processing...></div>
+</div>
+<div class="modal-footer text-footer"></div>
+</div>
+</div>
+</div>
+<script>
+var Roblox = Roblox || {};
+Roblox.jsConsoleEnabled = false;
+</script>
+<script>
+$(function() {
+Roblox.CookieUpgrader.domain = 'voidrev.us';
+Roblox.CookieUpgrader.upgrade("GuestData", {
+expires: Roblox.CookieUpgrader.thirtyYearsFromNow
+});
+Roblox.CookieUpgrader.upgrade("RBXSource", {
+expires: function(cookie) {
+return Roblox.CookieUpgrader.getExpirationFromCookieValue("rbx_acquisition_time", cookie);
+}
+});
+Roblox.CookieUpgrader.upgrade("RBXViralAcquisition", {
+expires: function(cookie) {
+return Roblox.CookieUpgrader.getExpirationFromCookieValue("time", cookie);
+}
+});
+Roblox.CookieUpgrader.upgrade("RBXMarketing", {
+expires: Roblox.CookieUpgrader.thirtyYearsFromNow
+});
+Roblox.CookieUpgrader.upgrade("RBXSessionTracker", {
+expires: Roblox.CookieUpgrader.fourHoursFromNow
+});
+Roblox.CookieUpgrader.upgrade("RBXEventTrackerV2", {
+expires: Roblox.CookieUpgrader.thirtyYearsFromNow
+});
+});
+</script>
+<script onerror=Roblox.BundleDetector&amp;&amp;Roblox.BundleDetector.reportBundleError(this) data-monitor=true data-bundlename=intl-polyfill src=https://www.voidrev.us/js/ee40f2a1a1a92c3ddcfbd6941428ebc0.js></script>
+<script onerror=Roblox.BundleDetector&amp;&amp;Roblox.BundleDetector.reportBundleError(this) data-monitor=true data-bundlename=InternationalCore src=https://www.voidrev.us/js/b7765265afdb7c76d94552b635c3d3b9003e39e810227f3d25432466a817b0f1.js></script>
+<script onerror=Roblox.BundleDetector&amp;&amp;Roblox.BundleDetector.reportBundleError(this) data-monitor=true data-bundlename=TranslationResources src=https://www.voidrev.us/js/73a89de8a6dbe8005fb3d6be12e361fddac57c13295171d3a8d5f397e761615d.js></script>
+<script onerror=Roblox.BundleDetector&amp;&amp;Roblox.BundleDetector.reportBundleError(this) data-monitor=true data-bundlename=leanbase src=https://www.voidrev.us/js/9a783476e849741746ee608d2248c528.js></script>
+<script onerror=Roblox.BundleDetector&amp;&amp;Roblox.BundleDetector.reportBundleError(this) data-monitor=true data-bundlename=CoreUtilities src=https://www.voidrev.us/js/424d9047707953cb2c2c579e61e3048607c8f431aa15ac462fde2a19680cb7b5.js></script>
+<script onerror=Roblox.BundleDetector&amp;&amp;Roblox.BundleDetector.reportBundleError(this) data-monitor=true data-bundlename=CoreRobloxUtilities src=https://www.voidrev.us/js/33e4b631ff2cfc7c8c689a07cefbc8f9c02b87e8784e57279c542c21832534a0.js></script>
+<script onerror=Roblox.BundleDetector&amp;&amp;Roblox.BundleDetector.reportBundleError(this) data-monitor=true data-bundlename=React src=https://www.voidrev.us/js/3485182d26ebdd16cc205fc1dc5d7de152529918cf897b07865339de5d5abfce.js></script>
+<script onerror=Roblox.BundleDetector&amp;&amp;Roblox.BundleDetector.reportBundleError(this) data-monitor=true data-bundlename=ReactUtilities src=https://www.voidrev.us/js/3bfcca1f8bb2298e510c1baa286b2033ae6209a08bdf8967dacd2de45229730e.js></script>
+<script onerror=Roblox.BundleDetector&amp;&amp;Roblox.BundleDetector.reportBundleError(this) data-monitor=true data-bundlename=ReactStyleGuide src=https://www.voidrev.us/js/e532082c8bf2b649e0340c83807c1ef079bb9f850e4479655866d94ac845878d.js></script>
+<script onerror=Roblox.BundleDetector&amp;&amp;Roblox.BundleDetector.reportBundleError(this) data-monitor=true data-bundlename=angular src=https://www.voidrev.us/js/ae5b5a047c32177e8d21426c506865aa.js></script>
+<div ng-modules=baseTemplateApp>
+<script src=https://www.voidrev.us/js/cbd9a121217c4887264ffe32686ecd52.js></script>
+</div>
+<div ng-modules=pageTemplateApp>
+<script src=https://www.voidrev.us/js/e88cda5cae3197f3808cb681f07f8c23.js></script>
+</div>
+<script>
+Roblox.config.externalResources = [];
+Roblox.config.paths['Pages.Catalog'] = 'https://www.voidrev.us/js/baa0c90950583c77f295ecd0748e32ce.js';
+Roblox.config.paths['Pages.CatalogShared'] = 'https://www.voidrev.us/js/fac702cb852bab6006d426d83c56f8ab.js';
+Roblox.config.paths['Widgets.AvatarImage'] = 'https://www.voidrev.us/js/76e30b0ae6a1be83cbf018579681b891.js';
+Roblox.config.paths['Widgets.DropdownMenu'] = 'https://www.voidrev.us/js/c948a7edd36e01db699c8cf19303376d.js';
+Roblox.config.paths['Widgets.GroupImage'] = 'https://www.voidrev.us/js/3afc03adcc2aaca01500baaf69b52d9c.js';
+Roblox.config.paths['Widgets.HierarchicalDropdown'] = 'https://www.voidrev.us/js/c90aea1e430a241776db6775e98c3e03.js';
+Roblox.config.paths['Widgets.ItemImage'] = 'https://www.voidrev.us/js/de56e6c24a3e70ee7d1ec900c24042e8.js';
+Roblox.config.paths['Widgets.PlaceImage'] = 'https://www.voidrev.us/js/6003f8790df31d5445169faea5c04fd7.js';
+</script>
+<script>
+Roblox.XsrfToken.setToken('ut8YkpeObUBt');
+</script>
+<script>
+$(function() {
+Roblox.DeveloperConsoleWarning.showWarning();
+});
+</script>
+<script>
+$(function() {
+Roblox.JSErrorTracker.initialize({
+'suppressConsoleError': true
+});
+});
+</script>
+<script>
+$(function() {
+function trackReturns() {
+function dayDiff(d1, d2) {
+return Math.floor((d1 - d2) / 86400000);
+}
+if(!localStorage) {
+return false;
+}
+var cookieName = 'RBXReturn';
+var cookieOptions = {
+expires: 9001
+};
+var cookieStr = localStorage.getItem(cookieName) || "";
+var cookie = {};
+try {
+cookie = JSON.parse(cookieStr);
+} catch(ex) {}
+try {
+if(typeof cookie.ts === "undefined" || isNaN(new Date(cookie.ts))) {
+localStorage.setItem(cookieName, JSON.stringify({
+ts: new Date().toDateString()
+}));
+return false;
+}
+} catch(ex) {
+return false;
+}
+var daysSinceFirstVisit = dayDiff(new Date(), new Date(cookie.ts));
+if(daysSinceFirstVisit == 1 && typeof cookie.odr === "undefined") {
+RobloxEventManager.triggerEvent('rbx_evt_odr', {});
+cookie.odr = 1;
+}
+if(daysSinceFirstVisit >= 1 && daysSinceFirstVisit <= 7 && typeof cookie.sdr === "undefined") {
+RobloxEventManager.triggerEvent('rbx_evt_sdr', {});
+cookie.sdr = 1;
+}
+try {
+localStorage.setItem(cookieName, JSON.stringify(cookie));
+} catch(ex) {
+return false;
+}
+}
+GoogleListener.init();
+RobloxEventManager.initialize(true);
+RobloxEventManager.triggerEvent('rbx_evt_pageview');
+trackReturns();
+RobloxEventManager._idleInterval = 450000;
+RobloxEventManager.registerCookieStoreEvent('rbx_evt_initial_install_start');
+RobloxEventManager.registerCookieStoreEvent('rbx_evt_ftp');
+RobloxEventManager.registerCookieStoreEvent('rbx_evt_initial_install_success');
+RobloxEventManager.registerCookieStoreEvent('rbx_evt_fmp');
+RobloxEventManager.startMonitor();
+});
+</script>
+<script>
+var Roblox = Roblox || {};
+Roblox.UpsellAdModal = Roblox.UpsellAdModal || {};
+Roblox.UpsellAdModal.Resources = {
+title: "Remove Ads Like This",
+body: "Builders Club members do not see external ads like these.",
+accept: "Upgrade Now",
+decline: "No, thanks"
+};
+</script>
+<script onerror=Roblox.BundleDetector&amp;&amp;Roblox.BundleDetector.reportBundleError(this) data-monitor=true data-bundlename=page src=https://www.voidrev.us/js/39536748def3c6658a8a45d6169c7ba4.js></script>
+<script onerror=Roblox.BundleDetector&amp;&amp;Roblox.BundleDetector.reportBundleError(this) data-monitor=true data-bundlename=StyleGuide src=https://www.voidrev.us/js/e7abe73a7656cf2a03f39845eb9673ac3d8f7317e5d07a05e3c145153d1b4e5a.js></script>
+<script onerror=Roblox.BundleDetector&amp;&amp;Roblox.BundleDetector.reportBundleError(this) data-monitor=true data-bundlename=SocialLinksJumbotron src=https://www.voidrev.us/js/de9bfc1d51a09d97a697ed26c186dd871501454901881899ec9a0c143d1b5c6c.js></script>
+<script onerror=Roblox.BundleDetector&amp;&amp;Roblox.BundleDetector.reportBundleError(this) data-monitor=true data-bundlename=Chat src=https://www.voidrev.us/js/54b3d6bacb9354a5abe5524e4160eadd123934187d8b81fb37b025f992299c0b.js></script>
+<script onerror=Roblox.BundleDetector&amp;&amp;Roblox.BundleDetector.reportBundleError(this) data-monitor=true data-bundlename=GameLaunch src=https://www.voidrev.us/js/30dff8f907780ef7ba7774c159e1bb6593cf2ce76eca77b337270817a0dbdc25.js></script>
+<script>
+var _comscore = _comscore || [];
+_comscore.push({
+c1: "2",
+c2: "6035605",
+c3: "",
+c4: "",
+c15: ""
+});
+(function() {
+var s = document.createElement("script"),
+el = document.getElementsByTagName("script")[0];
+s.async = true;
+s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+el.parentNode.insertBefore(s, el);
+})();
+</script>
+<noscript><img src="http://b.scorecardresearch.com/p?c1=2&amp;c2=&amp;c3=&amp;c4=&amp;c5=&amp;c6=&amp;c15=&amp;cv=2.0&amp;cj=1"></noscript>
+<script onerror=Roblox.BundleDetector&amp;&amp;Roblox.BundleDetector.reportBundleError(this) data-monitor=true data-bundlename=pageEnd src=https://www.voidrev.us/js/ee367c0f9a84721825a41aade27b9605.js></script>
+<?php }else{
+http_response_code(404);
+header('HTTP/1.0 404 Not Found', true, 404);
+echo file_get_contents($_SERVER['DOCUMENT_ROOT'].'/errorpages/404.php');
+exit();
+} ?>

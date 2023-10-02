@@ -1,0 +1,86 @@
+body{
+    font-family: "Comic Sans MS", "Comic Sans"!important;
+}
+h1{
+    font-family: "Comic Sans MS", "Comic Sans"!important;
+}
+h2{
+    font-family: "Comic Sans MS", "Comic Sans"!important;
+}
+h3{
+    font-family: "Comic Sans MS", "Comic Sans"!important;
+}
+h4{
+    font-family: "Comic Sans MS", "Comic Sans"!important;
+}
+h5{
+    font-family: "Comic Sans MS", "Comic Sans"!important;
+}
+.alert-info{
+background-color:#02f639!important;
+}
+.rbx-header{
+background-color: #ff00a2!important;
+}
+.game-card-container {
+    background-color: #f00!important;
+}
+.section-content {
+    background-color: #f00!important;
+}
+.btn-secondary-xs {
+background-color: #ff00a2!important;
+}
+.content {
+background-color: #00a2ff!important;
+}
+body {
+background-color: #00a2ff!important;
+color: #00ff33!important;
+}
+#Body {
+background-color: #00a2ff!important;
+color: #00ff33!important;
+}
+.rbx-left-col{
+background-color: #2a00ff!important;
+}
+.icon-nav-search{
+    background-image: url(/img/Shared/navigation_02012016_light.svg)!important
+}
+.icon-nav-home{
+    background-image: url(/img/Shared/navigation_02012016_light.svg)!important
+}
+.icon-nav-profile{
+    background-image: url(/img/Shared/navigation_02012016_light.svg)!important
+}   
+.icon-nav-message{
+    background-image: url(/img/Shared/navigation_02012016_light.svg)!important
+}
+.icon-nav-friends{
+    background-image: url(/img/Shared/navigation_02012016_light.svg)!important
+}
+.icon-nav-charactercustomizer{
+    background-image: url(/img/Shared/navigation_02012016_light.svg)!important
+}
+.icon-nav-inventory{
+    background-image: url(/img/Shared/navigation_02012016_light.svg)!important
+}
+.icon-nav-trade{
+    background-image: url(/img/Shared/navigation_02012016_light.svg)!important
+}
+.icon-nav-group{
+    background-image: url(/img/Shared/navigation_02012016_light.svg)!important
+}
+.icon-nav-forum{
+    background-image: url(/img/Shared/navigation_02012016_light.svg)!important
+}
+.icon-nav-blog{
+    background-image: url(/img/Shared/navigation_02012016_light.svg)!important
+}
+.icon-more{
+    background-image: url(/img/Shared/generic_10252016_light.svg)!important
+}
+.messageread{
+    background-color: #ff00ba!important;
+}

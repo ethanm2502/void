@@ -1,0 +1,563 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.limrev.xyz/roblox.xsd" version="4">
+	<Meta name="ExplicitAutoJoints">false</Meta>
+	<External>null</External>
+	<External>nil</External>
+	<Item class="Accessory" referent="RBX95432F75C0D14EA6B780A6AF8A8F34C0">
+		<Properties>
+			<CoordinateFrame name="AttachmentPoint">
+				<X>0</X>
+				<Y>0</Y>
+				<Z>0</Z>
+				<R00>1</R00>
+				<R01>0</R01>
+				<R02>0</R02>
+				<R10>0</R10>
+				<R11>1</R11>
+				<R12>0</R12>
+				<R20>0</R20>
+				<R21>0</R21>
+				<R22>1</R22>
+			</CoordinateFrame>
+			<string name="Name">Bubbly</string>
+			<BinaryString name="Tags"></BinaryString>
+		</Properties>
+		<Item class="Script" referent="RBXD2291F9E71904B6796D9B0B6A02BDA23">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">Script</string>
+				<string name="ScriptGuid">{0ACD5D7B-C102-4BA3-BAED-C3418F1AD928}</string>
+				<ProtectedString name="Source"><![CDATA[--[[
+SETUP TODO:
+- Read the following to know how to setup bundles -
+
+- Change all the animations listed with the other bundle you chose
+[
+POSE
+CLIMB
+FALL
+IDLE
+JUMP
+RUN
+SWIM
+SWIMIDLE
+WALK
+]
+
+for example:
+Bubbly>Script>climb>ClimbAnim.AnimationId = http://www.roblox.com/asset/?id=10921053544 (you would change this with yours)
+repeat process until done
+
+note: make sure all of the ids are changed / test in studio, make sure you did ALL of them, if you need help contact me 
+contact: @bored#5570
+]]
+
+local Character = script.Parent.Parent
+local RigType = Character:FindFirstChild("Humanoid").RigType
+function Create()
+	local Animate = Character:WaitForChild("Animate")
+	local Removed
+	for _, Child in pairs(Animate:GetChildren()) do
+		if Child:IsA("StringValue") then
+			Child:Remove()
+			Removed = true
+		end
+	end
+
+	if Removed then
+		for _, Child in pairs(script:GetChildren()) do
+			if Child:IsA("StringValue") then
+				Child.Parent = Animate
+			end
+		end
+	end
+	script.Parent:Destroy()
+end
+if RigType == Enum.HumanoidRigType.R15 then
+	Create()
+else
+	return script.Parent:Destroy()
+end]]></ProtectedString>
+				<BinaryString name="Tags"></BinaryString>
+			</Properties>
+			<Item class="StringValue" referent="RBX382E0B9C336A4B8086C35EC2395E5B96">
+				<Properties>
+					<string name="Name">cheer</string>
+					<BinaryString name="Tags"></BinaryString>
+					<string name="Value"></string>
+				</Properties>
+				<Item class="Animation" referent="RBXB76CF6D8F29C4302860AFFF02CAE0579">
+					<Properties>
+						<Content name="AnimationId"><url>http://www.roblox.com/asset/?id=507770677</url></Content>
+						<string name="Name">CheerAnim</string>
+						<BinaryString name="Tags"></BinaryString>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="StringValue" referent="RBXEEC215043D1D462F849680AEF2B291FA">
+				<Properties>
+					<string name="Name">climb</string>
+					<BinaryString name="Tags"></BinaryString>
+					<string name="Value"></string>
+				</Properties>
+				<Item class="Animation" referent="RBXF23DADA9728549C686C276E05164B4C8">
+					<Properties>
+						<Content name="AnimationId"><url>http://www.roblox.com/asset/?id=10921053544</url></Content>
+						<string name="Name">ClimbAnim</string>
+						<BinaryString name="Tags"></BinaryString>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="StringValue" referent="RBXBDAD7FEFB1D04D53A0AF6BB98A4B072D">
+				<Properties>
+					<string name="Name">dance</string>
+					<BinaryString name="Tags"></BinaryString>
+					<string name="Value"></string>
+				</Properties>
+				<Item class="Animation" referent="RBXFDA2273AE42D4A55AF7EC63AD64CC15F">
+					<Properties>
+						<Content name="AnimationId"><url>http://www.roblox.com/asset/?id=507771019</url></Content>
+						<string name="Name">Animation1</string>
+						<BinaryString name="Tags"></BinaryString>
+					</Properties>
+					<Item class="NumberValue" referent="RBX0DA10F54D0A64CA0A0038E0A33EE945F">
+						<Properties>
+							<string name="Name">Weight</string>
+							<BinaryString name="Tags"></BinaryString>
+							<double name="Value">10</double>
+						</Properties>
+					</Item>
+				</Item>
+				<Item class="Animation" referent="RBXA220999BBCB745A9BD7ECB5358B56DFE">
+					<Properties>
+						<Content name="AnimationId"><url>http://www.roblox.com/asset/?id=507771955</url></Content>
+						<string name="Name">Animation2</string>
+						<BinaryString name="Tags"></BinaryString>
+					</Properties>
+					<Item class="NumberValue" referent="RBX3B3DD64F0BF54150AF381431DAECB7C2">
+						<Properties>
+							<string name="Name">Weight</string>
+							<BinaryString name="Tags"></BinaryString>
+							<double name="Value">10</double>
+						</Properties>
+					</Item>
+				</Item>
+				<Item class="Animation" referent="RBX01395D240C674D0481A9226E0901985F">
+					<Properties>
+						<Content name="AnimationId"><url>http://www.roblox.com/asset/?id=507772104</url></Content>
+						<string name="Name">Animation3</string>
+						<BinaryString name="Tags"></BinaryString>
+					</Properties>
+					<Item class="NumberValue" referent="RBXA69CAAEF01644AD7BA1675720D906491">
+						<Properties>
+							<string name="Name">Weight</string>
+							<BinaryString name="Tags"></BinaryString>
+							<double name="Value">10</double>
+						</Properties>
+					</Item>
+				</Item>
+			</Item>
+			<Item class="StringValue" referent="RBX55DAC2E6F7994E6CA726EE1CACDDB98E">
+				<Properties>
+					<string name="Name">dance2</string>
+					<BinaryString name="Tags"></BinaryString>
+					<string name="Value"></string>
+				</Properties>
+				<Item class="Animation" referent="RBXF1BB432F39334BACA82CCCE900794C00">
+					<Properties>
+						<Content name="AnimationId"><url>http://www.roblox.com/asset/?id=507776043</url></Content>
+						<string name="Name">Animation1</string>
+						<BinaryString name="Tags"></BinaryString>
+					</Properties>
+					<Item class="NumberValue" referent="RBX74343983E8C24B0A8719CC38E46180E0">
+						<Properties>
+							<string name="Name">Weight</string>
+							<BinaryString name="Tags"></BinaryString>
+							<double name="Value">10</double>
+						</Properties>
+					</Item>
+				</Item>
+				<Item class="Animation" referent="RBXC007A3DAF5F44163BF624921AE58F6EF">
+					<Properties>
+						<Content name="AnimationId"><url>http://www.roblox.com/asset/?id=507776720</url></Content>
+						<string name="Name">Animation2</string>
+						<BinaryString name="Tags"></BinaryString>
+					</Properties>
+					<Item class="NumberValue" referent="RBXF657C6C407114F5496070AA2AECE5020">
+						<Properties>
+							<string name="Name">Weight</string>
+							<BinaryString name="Tags"></BinaryString>
+							<double name="Value">10</double>
+						</Properties>
+					</Item>
+				</Item>
+				<Item class="Animation" referent="RBX19B3D8FD332D4F59A71F57EEE13F8BDB">
+					<Properties>
+						<Content name="AnimationId"><url>http://www.roblox.com/asset/?id=507776879</url></Content>
+						<string name="Name">Animation3</string>
+						<BinaryString name="Tags"></BinaryString>
+					</Properties>
+					<Item class="NumberValue" referent="RBX7E368B93AC2541F8A2D9DFD0BEB1D405">
+						<Properties>
+							<string name="Name">Weight</string>
+							<BinaryString name="Tags"></BinaryString>
+							<double name="Value">10</double>
+						</Properties>
+					</Item>
+				</Item>
+			</Item>
+			<Item class="StringValue" referent="RBX73B4E26045644445A0D2EB21D1DAA35F">
+				<Properties>
+					<string name="Name">dance3</string>
+					<BinaryString name="Tags"></BinaryString>
+					<string name="Value"></string>
+				</Properties>
+				<Item class="Animation" referent="RBX1AA45C6C40A848E2A8142FE7E90A4286">
+					<Properties>
+						<Content name="AnimationId"><url>http://www.roblox.com/asset/?id=507777268</url></Content>
+						<string name="Name">Animation1</string>
+						<BinaryString name="Tags"></BinaryString>
+					</Properties>
+					<Item class="NumberValue" referent="RBXC6F7E14748E645BC801E8D3543AC446D">
+						<Properties>
+							<string name="Name">Weight</string>
+							<BinaryString name="Tags"></BinaryString>
+							<double name="Value">10</double>
+						</Properties>
+					</Item>
+				</Item>
+				<Item class="Animation" referent="RBX7C7A4E154DD24CE3ACDEEB1B419B827A">
+					<Properties>
+						<Content name="AnimationId"><url>http://www.roblox.com/asset/?id=507777451</url></Content>
+						<string name="Name">Animation2</string>
+						<BinaryString name="Tags"></BinaryString>
+					</Properties>
+					<Item class="NumberValue" referent="RBXF03A925FC620460EAADD0A4540AB1E8C">
+						<Properties>
+							<string name="Name">Weight</string>
+							<BinaryString name="Tags"></BinaryString>
+							<double name="Value">10</double>
+						</Properties>
+					</Item>
+				</Item>
+				<Item class="Animation" referent="RBXA4A271C6C74D4389AEEB326A3904FF06">
+					<Properties>
+						<Content name="AnimationId"><url>http://www.roblox.com/asset/?id=507777623</url></Content>
+						<string name="Name">Animation3</string>
+						<BinaryString name="Tags"></BinaryString>
+					</Properties>
+					<Item class="NumberValue" referent="RBX7E94FD39E03B4D4CA61CEE5E269AB9B2">
+						<Properties>
+							<string name="Name">Weight</string>
+							<BinaryString name="Tags"></BinaryString>
+							<double name="Value">10</double>
+						</Properties>
+					</Item>
+				</Item>
+			</Item>
+			<Item class="StringValue" referent="RBX7561519F56544175B23E0903154637AE">
+				<Properties>
+					<string name="Name">fall</string>
+					<BinaryString name="Tags"></BinaryString>
+					<string name="Value"></string>
+				</Properties>
+				<Item class="Animation" referent="RBX01090F99EAAA4AD79F74BBC387C597CC">
+					<Properties>
+						<Content name="AnimationId"><url>http://www.roblox.com/asset/?id=10921061530</url></Content>
+						<string name="Name">FallAnim</string>
+						<BinaryString name="Tags"></BinaryString>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="StringValue" referent="RBX147B8D9FEF024CF1A6F049A86A415E3E">
+				<Properties>
+					<string name="Name">idle</string>
+					<BinaryString name="Tags"></BinaryString>
+					<string name="Value"></string>
+				</Properties>
+				<Item class="Animation" referent="RBXF04A28F0618A4CC4809F4E1AEAFCED7E">
+					<Properties>
+						<Content name="AnimationId"><url>http://www.roblox.com/asset/?id=10921054344</url></Content>
+						<string name="Name">Animation1</string>
+						<BinaryString name="Tags"></BinaryString>
+					</Properties>
+					<Item class="NumberValue" referent="RBX91A476D509C84E5B96E63BCE4BB9D49D">
+						<Properties>
+							<string name="Name">Weight</string>
+							<BinaryString name="Tags"></BinaryString>
+							<double name="Value">9</double>
+						</Properties>
+					</Item>
+				</Item>
+				<Item class="Animation" referent="RBX193F1582CC2447B19C466BCF9AAF18DC">
+					<Properties>
+						<Content name="AnimationId"><url>http://www.roblox.com/asset/?id=10921055107</url></Content>
+						<string name="Name">Animation2</string>
+						<BinaryString name="Tags"></BinaryString>
+					</Properties>
+					<Item class="NumberValue" referent="RBX2F49F78CB54C4230B46714F9355AD974">
+						<Properties>
+							<string name="Name">Weight</string>
+							<BinaryString name="Tags"></BinaryString>
+							<double name="Value">1</double>
+						</Properties>
+					</Item>
+				</Item>
+			</Item>
+			<Item class="StringValue" referent="RBX05DFCC7C0ED244BC84654D3608E8F627">
+				<Properties>
+					<string name="Name">jump</string>
+					<BinaryString name="Tags"></BinaryString>
+					<string name="Value"></string>
+				</Properties>
+				<Item class="Animation" referent="RBXBA7AA86DDAE44781A8BC4E197CBCEF80">
+					<Properties>
+						<Content name="AnimationId"><url>http://www.roblox.com/asset/?id=10921062673</url></Content>
+						<string name="Name">JumpAnim</string>
+						<BinaryString name="Tags"></BinaryString>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="StringValue" referent="RBX6BA133A07A2B46DB8DF61E3B5400BC08">
+				<Properties>
+					<string name="Name">laugh</string>
+					<BinaryString name="Tags"></BinaryString>
+					<string name="Value"></string>
+				</Properties>
+				<Item class="Animation" referent="RBX0EF5F6F3A9CD4BB7B3D42711F294C92D">
+					<Properties>
+						<Content name="AnimationId"><url>http://www.roblox.com/asset/?id=507770818</url></Content>
+						<string name="Name">LaughAnim</string>
+						<BinaryString name="Tags"></BinaryString>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="StringValue" referent="RBXA4C732F74E124317A4DDD9A9BCB94DBE">
+				<Properties>
+					<string name="Name">point</string>
+					<BinaryString name="Tags"></BinaryString>
+					<string name="Value"></string>
+				</Properties>
+				<Item class="Animation" referent="RBXEC480E209A8246B592B90E6C9EB06C99">
+					<Properties>
+						<Content name="AnimationId"><url>http://www.roblox.com/asset/?id=507770453</url></Content>
+						<string name="Name">PointAnim</string>
+						<BinaryString name="Tags"></BinaryString>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="StringValue" referent="RBX1B759AC4C14F492488C40A4BEE4DF41C">
+				<Properties>
+					<string name="Name">run</string>
+					<BinaryString name="Tags"></BinaryString>
+					<string name="Value"></string>
+				</Properties>
+				<Item class="Animation" referent="RBX02BAB4101D3840399D0198795DA3A11A">
+					<Properties>
+						<Content name="AnimationId"><url>http://www.roblox.com/asset/?id=10921057244</url></Content>
+						<string name="Name">RunAnim</string>
+						<BinaryString name="Tags"></BinaryString>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="StringValue" referent="RBX939A69DA747540949422EBE1E6FE70A0">
+				<Properties>
+					<string name="Name">sit</string>
+					<BinaryString name="Tags"></BinaryString>
+					<string name="Value"></string>
+				</Properties>
+				<Item class="Animation" referent="RBX944EEF1B51D64B31AEC33F766EA8BB7D">
+					<Properties>
+						<Content name="AnimationId"><url>http://www.roblox.com/asset/?id=2506281703</url></Content>
+						<string name="Name">SitAnim</string>
+						<BinaryString name="Tags"></BinaryString>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="StringValue" referent="RBX25E2A90C1BB548B7A703AB84AE3EF194">
+				<Properties>
+					<string name="Name">swim</string>
+					<BinaryString name="Tags"></BinaryString>
+					<string name="Value"></string>
+				</Properties>
+				<Item class="Animation" referent="RBXDB28CBA0175B4C5B8A71A0BD01CBF52E">
+					<Properties>
+						<Content name="AnimationId"><url>http://www.roblox.com/asset/?id=10921063569</url></Content>
+						<string name="Name">Swim</string>
+						<BinaryString name="Tags"></BinaryString>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="StringValue" referent="RBXD66329A08ED84199A7A06DB51961928B">
+				<Properties>
+					<string name="Name">swimidle</string>
+					<BinaryString name="Tags"></BinaryString>
+					<string name="Value"></string>
+				</Properties>
+				<Item class="Animation" referent="RBX36A0389FBE7B4A32A96DA061EFA25D1F">
+					<Properties>
+						<Content name="AnimationId"><url>http://www.roblox.com/asset/?id=10922582160</url></Content>
+						<string name="Name">SwimIdle</string>
+						<BinaryString name="Tags"></BinaryString>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="StringValue" referent="RBX22C03C1AFD4246559B831ABA6491BC70">
+				<Properties>
+					<string name="Name">toollunge</string>
+					<BinaryString name="Tags"></BinaryString>
+					<string name="Value"></string>
+				</Properties>
+				<Item class="Animation" referent="RBX7D8BC64073E84AA6A5D275B321BD532E">
+					<Properties>
+						<Content name="AnimationId"><url>http://www.roblox.com/asset/?id=522638767</url></Content>
+						<string name="Name">ToolLungeAnim</string>
+						<BinaryString name="Tags"></BinaryString>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="StringValue" referent="RBX4CF018D6A6944CE88428F5F31E037204">
+				<Properties>
+					<string name="Name">toolnone</string>
+					<BinaryString name="Tags"></BinaryString>
+					<string name="Value"></string>
+				</Properties>
+				<Item class="Animation" referent="RBX4BEC824F89E04AF49A8BAFD70312377A">
+					<Properties>
+						<Content name="AnimationId"><url>http://www.roblox.com/asset/?id=507768375</url></Content>
+						<string name="Name">ToolNoneAnim</string>
+						<BinaryString name="Tags"></BinaryString>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="StringValue" referent="RBXB069ACC5A0B246F6B5C06308550E2917">
+				<Properties>
+					<string name="Name">toolslash</string>
+					<BinaryString name="Tags"></BinaryString>
+					<string name="Value"></string>
+				</Properties>
+				<Item class="Animation" referent="RBX42FD9C4DA9714168B03389AB6F6A1282">
+					<Properties>
+						<Content name="AnimationId"><url>http://www.roblox.com/asset/?id=522635514</url></Content>
+						<string name="Name">ToolSlashAnim</string>
+						<BinaryString name="Tags"></BinaryString>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="StringValue" referent="RBXE6A040D1B14744909F26701BE7DBCE98">
+				<Properties>
+					<string name="Name">walk</string>
+					<BinaryString name="Tags"></BinaryString>
+					<string name="Value"></string>
+				</Properties>
+				<Item class="Animation" referent="RBX3379B1B07A93490C915B723B9A275817">
+					<Properties>
+						<Content name="AnimationId"><url>http://www.roblox.com/asset/?id=10921057244</url></Content>
+						<string name="Name">WalkAnim</string>
+						<BinaryString name="Tags"></BinaryString>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="StringValue" referent="RBX8CD967B5A43A4222ADAABFDD2F88EF04">
+				<Properties>
+					<string name="Name">wave</string>
+					<BinaryString name="Tags"></BinaryString>
+					<string name="Value"></string>
+				</Properties>
+				<Item class="Animation" referent="RBX1A33C3A9A2FC464083B1744C958474CF">
+					<Properties>
+						<Content name="AnimationId"><url>http://www.roblox.com/asset/?id=507770239</url></Content>
+						<string name="Name">WaveAnim</string>
+						<BinaryString name="Tags"></BinaryString>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="StringValue" referent="RBXAAADCD29349A432F94AD7E60E93B0079">
+				<Properties>
+					<string name="Name">pose</string>
+					<BinaryString name="Tags"></BinaryString>
+					<string name="Value"></string>
+				</Properties>
+				<Item class="Animation" referent="RBX5A4B2D851C9B4A72B94DCF779D04BDD2">
+					<Properties>
+						<Content name="AnimationId"><url>http://www.roblox.com/asset/?id=10921056055</url></Content>
+						<string name="Name">PoseAnim</string>
+						<BinaryString name="Tags"></BinaryString>
+					</Properties>
+				</Item>
+			</Item>
+		</Item>
+		<Item class="Part" referent="RBX9837100F7EBB431AB07B30839A0140B4">
+			<Properties>
+				<bool name="Anchored">true</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">false</bool>
+				<token name="Material">256</token>
+				<string name="Name">Handle</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<BinaryString name="Tags"></BinaryString>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">1</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>0.0500000007</X>
+					<Y>0.0500000007</Y>
+					<Z>0.0500000007</Z>
+				</Vector3>
+			</Properties>
+		</Item>
+	</Item>
+</roblox>

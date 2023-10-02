@@ -1,0 +1,4 @@
+<?php
+header("Content-Type: application/json");
+?>
+{"Featured":0,"All":1,"Collectibles":2,"Clothing":3,"BodyParts":4,"Gear":5,"Models":6,"Plugins":7,"Decals":8,"Hats":9,"Faces":10,"Packages":11,"Shirts":12,"Tshirts":13,"Pants":14,"Heads":15,"Audio":16,"RobloxCreated":17,"Meshes":18,"Accessories":19,"HairAccessories":20,"FaceAccessories":21,"NeckAccessories":22,"ShoulderAccessories":23,"FrontAccessories":24,"BackAccessories":25,"WaistAccessories":26,"AvatarAnimations":27,"ClimbAnimations":28,"FallAnimations":30,"IdleAnimations":31,"JumpAnimations":32,"RunAnimations":33,"SwimAnimations":34,"WalkAnimations":35,"AnimationPackage":36,"BodyPartsBundles":37,"AnimationBundles":38,"CommunityCreations":40,"Recommended":51,"AllBundles":53,"HeadAccessories":54,"ClassicTShirts":55,"ClassicShirts":56,"ClassicPants":57}

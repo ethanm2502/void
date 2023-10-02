@@ -1,0 +1,6 @@
+<Files "privatekey.pem">  
+  Require all denied
+</Files>
+<Files "privatekey2.pem">  
+  Require all denied
+</Files>

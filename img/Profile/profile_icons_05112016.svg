@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="icon" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="44px" height="264px"
+	 viewBox="0 0 44 264" style="enable-background:new 0 0 44 264;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#B8B8B8;stroke-width:2;stroke-linejoin:round;}
+	.st1{fill:none;stroke:#02B757;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+	.st2{fill:#02B757;}
+	.st3{fill:none;stroke:#00A2FF;stroke-width:2;stroke-linejoin:round;}
+	.st4{fill:none;stroke:#00A2FF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+</style>
+<path id="message-gray" sketch:type="MSShapeGroup" class="st0" d="M13,241.5h18H13L13,241.5z M13,234.5h18H13L13,234.5z M40,251.5
+	H29l-7,7l-7-7H4v-26h36V251.5L40,251.5z"/>
+<g id="game">
+	<polygon class="st1" points="32.2,186.5 12.2,186.5 4,191.5 4,209.5 10.5,209.5 18.7,206.2 25.3,206.2 33.5,209.5 40,209.5 
+		40,191.5 	"/>
+	<line class="st1" x1="10.5" y1="198" x2="17.1" y2="198"/>
+	<line class="st1" x1="13.8" y1="194.7" x2="13.8" y2="201.3"/>
+	<g>
+		<path class="st2" d="M28.5,193.1c-1.4,0-2.5,1.1-2.5,2.5s1.1,2.5,2.5,2.5s2.5-1.1,2.5-2.5S29.9,193.1,28.5,193.1L28.5,193.1z"/>
+	</g>
+	<g>
+		<path class="st2" d="M33.5,198c-1.4,0-2.5,1.1-2.5,2.5s1.1,2.5,2.5,2.5s2.5-1.1,2.5-2.5C35.9,199.1,34.8,198,33.5,198L33.5,198z"
+			/>
+	</g>
+</g>
+<path id="message" sketch:type="MSShapeGroup" class="st3" d="M13,153.5h18H13L13,153.5z M13,146.5h18H13L13,146.5z M40,163.5H29
+	l-7,7l-7-7H4v-26h36V163.5L40,163.5z"/>
+<path id="add-gray" sketch:type="MSShapeGroup" class="st0" d="M32,116v12V116L32,116L32,116z M26,122h12H26L26,122L26,122z M28,100
+	c0,4.4-3.6,8-8,8s-8-3.6-8-8s3.6-8,8-8S28,95.6,28,100L28,100L28,100z M20,128c1.4,0,2.7-0.1,4-0.2L20,128L20,128L20,128z M26,114.6
+	c-2.8-0.5-6-0.6-6-0.6L26,114.6L26,114.6L26,114.6z M20,128c-8.1,0-14-2-14-2s2.3-8.3,4-10s10-2,10-2"/>
+<path id="remove" sketch:type="MSShapeGroup" class="st4" d="M26,78h12H26L26,78L26,78z M28,56c0,4.4-3.6,8-8,8s-8-3.6-8-8
+	s3.6-8,8-8S28,51.6,28,56L28,56L28,56z M20,84c1.4,0,2.7-0.1,4-0.2L20,84L20,84L20,84z M26,70.6c-2.8-0.5-6-0.6-6-0.6L26,70.6
+	L26,70.6L26,70.6z M20,84c-8.1,0-14-2-14-2s2.3-8.3,4-10s10-2,10-2"/>
+<path id="add" sketch:type="MSShapeGroup" class="st4" d="M32,28v12V28L32,28L32,28z M26,34h12H26L26,34L26,34z M28,12
+	c0,4.4-3.6,8-8,8s-8-3.6-8-8s3.6-8,8-8S28,7.6,28,12L28,12L28,12z M20,40c1.4,0,2.7-0.1,4-0.2L20,40L20,40L20,40z M26,26.6
+	c-2.8-0.5-6-0.6-6-0.6L26,26.6L26,26.6L26,26.6z M20,40c-8.1,0-14-2-14-2s2.3-8.3,4-10s10-2,10-2"/>
+</svg>

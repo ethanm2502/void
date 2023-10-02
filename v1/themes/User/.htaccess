@@ -1,0 +1,4 @@
+RewriteEngine on
+DirectorySlash Off
+RewriteOptions AllowNoSlash
+RewriteRule . /v1/themes/theme.php [L]

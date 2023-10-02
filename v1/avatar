@@ -1,0 +1,139 @@
+<?php
+header('Content-Type: application/json; charset=UTF-8');
+include($_SERVER['DOCUMENT_ROOT'].'/config/includes.php');
+$logged = false;
+if ($_COOKIE['password'] || $_COOKIE['_ROBLOSECURITY']) {
+$password = filter_var($_COOKIE['password'], FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES);
+$roblosec = filter_var($_COOKIE['_ROBLOSECURITY'], FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES);
+$usrquery = $con->prepare("SELECT * FROM `users` WHERE `password` = :password OR `ROBLOSECURITY` = :ROBLOSECURITY");
+$usrquery->execute(['password' => $password, 'ROBLOSECURITY' => $roblosec]);
+$usr = $usrquery->fetch();
+if ($usr != 0) {
+$logged = true;
+}
+}
+$uID = $usr['id'];
+if (stripos($_SERVER['REQUEST_URI'], "set-player-avatar-type") !== false) {
+$r15orr6 = json_decode($_REQUEST['playerAvatarType'], true);
+$uID = $usr['id'];
+if ($r15orr6 == "true") {
+$stmt = $con->prepare("UPDATE `users` SET `R15` = 1 WHERE `id` = :userID");
+$stmt->bindParam(':userID', $uID, PDO::PARAM_INT);
+$stmt->execute();
+} else {
+$stmt = $con->prepare("UPDATE `users` SET `R15` = 0 WHERE `id` = :userID");
+$stmt->bindParam(':userID', $uID, PDO::PARAM_INT);
+$stmt->execute();
+}
+unlink($_SERVER['DOCUMENT_ROOT'].'/thumbnails/'.$usr['fullthumbnailhash'].'.png');
+unlink($_SERVER['DOCUMENT_ROOT'].'/thumbnails/'.$usr['headshotthumbnailhash'].'.png');
+die(json_encode(['success' => true]));
+}
+if (stripos($_SERVER['REQUEST_URI'], "set-scales") !== false) {
+$json = json_decode(file_get_contents("php://input"),true);
+$headscale = (float)($json['head'] ?? 1);
+$heightscale = (float)($json['height'] ?? 1);
+$widthscale = (float)($json['width'] ?? 1);
+$depthscale = (float)($json['depth'] ?? 1);
+$proportionscale = (float)($json['proportion'] ?? 1);
+$bodyType = (float)($json['bodyType'] ?? 0);
+$stmt = $con->prepare("UPDATE users SET head = :headscale, height = :heightscale, width = :widthscale, depth = :depthscale, proportion = :proportionscale, bodyType = :bodyType WHERE uID = :uID");
+$stmt->bindParam(':headscale', $json['head'], PDO::PARAM_STR);
+$stmt->bindParam(':heightscale', $json['height'], PDO::PARAM_STR);
+$stmt->bindParam(':widthscale', $json['width'], PDO::PARAM_STR);
+$stmt->bindParam(':depthscale', $json['depth'], PDO::PARAM_STR);
+$stmt->bindParam(':proportionscale', $json['proportion'], PDO::PARAM_STR);
+$stmt->bindParam(':bodyType', $json['bodyType'], PDO::PARAM_STR);
+$stmt->bindParam(':uID', $uID, PDO::PARAM_INT);
+if ($stmt->execute()) {
+die(json_encode(['success' => true]));
+} else {
+http_response_code(500);
+die(json_encode(['success' => false]));
+}
+}
+$userquery = $con->prepare("SELECT * FROM `avataritems` WHERE `userid` = :id");
+$userquery->execute(['id' => $uID]);
+$countavatarquery = $con->prepare("SELECT * FROM `avataritems` WHERE `userid` = :id");
+$countavatarquery->execute(['id' => $uID]);
+$count = $countavatarquery->rowCount();
+$number = 0;
+$head = $usr['HeadColor'];
+$leftarm = $usr['LeftArmColor'];
+$leftleg = $usr['LeftLegColor'];
+$rightarm = $usr['RightArmColor'];
+$rightleg = $usr['RightLegColor'];
+$torso = $usr['TorsoColor'];
+if ($usr['R15'] == 0) {
+$AvatarType = "R6";
+} else {
+$AvatarType = "R15";
+}
+$response = [
+'scales' => [
+'height' => $usr['height'],
+'width' => $usr['width'],
+'head' => $usr['head'],
+'depth' => $usr['depth'],
+'proportion' => $usr['proportion'],
+'bodyType' => $usr['bodytype'],
+],
+'playerAvatarType' => $AvatarType,
+'bodyColors' => [
+'headColorId' => $head,
+'torsoColorId' => $torso,
+'rightArmColorId' => $rightarm,
+'leftArmColorId' => $leftarm,
+'rightLegColorId' => $rightleg,
+'leftLegColorId' => $leftleg,
+],
+'assets' => []
+];
+$pantsFound = false;
+$shirtFound = false;
+$emotes = [];
+while ($user = $userquery->fetch()) {
+$number = $number + 1;
+$assetId = $user['itemid'];
+$origassetId = $assetId;
+$libquery = $con->prepare("SELECT * FROM `library` WHERE `fileid` = :id");
+$libquery->execute(['id' => $assetId]);
+$librarystuff = $libquery->fetch();
+$assetId = $librarystuff['id'];
+if (!is_array($librarystuff)) {
+$stmt = $con->prepare("DELETE FROM `avataritems` WHERE `itemid` = :origassetId");
+$stmt->bindParam(':origassetId', $origassetId, PDO::PARAM_INT);
+$stmt->execute();
+}
+$itemname = $librarystuff['name'];
+$type = $user['type'];
+$typeid = isset($names[$type]) ? $names[$type] : 0;
+$response['assets'][] = [
+'id' => $assetId,
+'name' => $itemname,
+'assetType' => [
+'id' => $typeid,
+'name' => $type,
+],
+'currentVersionId' => $assetId,
+];
+if ($type == 'Pants') {
+$pantsFound = true;
+} elseif ($type == 'Shirt') {
+$shirtFound = true;
+} elseif ($type == 'Emote') {
+$emotes[] = [
+'assetId' => $assetId,
+'assetName' => $itemname,
+'position' => count($emotes) + 1,
+];
+}
+}
+if (!empty($emotes)) {
+$response['emotes'] = $emotes;
+}
+$response['defaultShirtApplied'] = $shirtFound;
+$response['defaultPantsApplied'] = $pantsFound;
+$response['emotes'] = [];
+echo json_encode($response);
+?>

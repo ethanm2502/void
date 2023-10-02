@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^(.*)$ /img/$1 [L]

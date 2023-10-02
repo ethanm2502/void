@@ -1,0 +1,4 @@
+<?php
+header("Content-Type: application/json");
+?>
+{"signupAndLogin":{"id":1,"locale":"en_us","name":"English(US)","nativeName":"English","language":{"id":41,"name":"English","nativeName":"English","languageCode":"en","isRightToLeft":false}},"generalExperience":{"id":1,"locale":"en_us","name":"English(US)","nativeName":"English","language":{"id":41,"name":"English","nativeName":"English","languageCode":"en","isRightToLeft":false}},"ugc":{"id":1,"locale":"en_us","name":"English(US)","nativeName":"English","language":{"id":41,"name":"English","nativeName":"English","languageCode":"en","isRightToLeft":false}}}

@@ -1,0 +1,24 @@
+<?php include ($_SERVER['DOCUMENT_ROOT'].'/config/database.php');
+header('Content-Type: application/json; charset=UTF-8; X-Robots-Tag: noindex'); 
+
+if (isset($_COOKIE['password']) || isset($_COOKIE['_ROBLOSECURITY'])) {
+    $password = urldecode(filter_input(INPUT_COOKIE, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
+    $roblosec = urldecode(filter_input(INPUT_COOKIE, '_ROBLOSECURITY', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES));
+  
+    $stmt = $con->prepare("SELECT * FROM `users` WHERE `password` = :password OR `ROBLOSECURITY` = :roblosec");
+    $stmt->bindParam(':password', $password);
+    $stmt->bindParam(':roblosec', $roblosec);
+    $stmt->execute();
+  
+    $usr = $stmt->fetch(PDO::FETCH_ASSOC);
+    $id = $usr['id'];
+  }
+  if(!is_array($usr)){
+  $id = 1;
+  }
+  $data = [
+    'browserTrackerId' => $id,
+    'appDeviceIdentifier' => null
+];
+echo json_encode($data);
+?>

@@ -1,0 +1,11 @@
+{
+"name": "jayde/php8.2.0",
+"type": "project",
+"require": {
+"snipe/banbuilder": "^2.3",
+"team-reflex/discord-php": "^7.3",
+"arthurkushman/php-wss": ">=1.3",
+        "cboden/ratchet": "^0.4.4",
+                "consoletvs/profanity": "^3.3"
+}
+}
